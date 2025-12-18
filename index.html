@@ -65,7 +65,7 @@
             z-index: -1;
         }
 
-        /* Matrix Rain Canvas */
+        /* Matrix Rain Canvas - Very Subtle */
         #matrix-canvas {
             position: fixed;
             top: 0;
@@ -74,7 +74,7 @@
             height: 100%;
             pointer-events: none;
             z-index: -2;
-            opacity: 0.15;
+            opacity: 0.04;
         }
 
         /* Soft Floating Orbs */
@@ -1296,7 +1296,7 @@
             </div>
             <span class="hero-badge">👋 Welcome to my Portfolio</span>
             <h1>Tarqul Alam Opi</h1>
-            <p class="hero-subtitle">I'm a <span class="typing"></span></p>
+            <p class="hero-subtitle">AI & Automation Engineer | Python Developer | Machine Learning Enthusiast</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Contact Me</a>
                 <a href="#projects" class="btn btn-outline"><i class="fas fa-briefcase"></i> View Projects</a>
@@ -1769,14 +1769,6 @@
         });
 
         window.addEventListener('load', () => document.querySelector('.preloader').classList.add('hide'));
-
-        new Typed('.typing', {
-            strings: ['AI & Automation Engineer', 'Python Developer', 'Machine Learning Engineer', 'Problem Solver'],
-            typeSpeed: 60,
-            backSpeed: 40,
-            loop: true,
-            showCursor: false
-        });
 
         const menuBtn = document.querySelector('.menu-btn');
         const navLinks = document.querySelector('.nav-links');
