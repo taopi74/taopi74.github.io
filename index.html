@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="icon" type="image/png" href="profile.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <style>
         :root {
@@ -58,65 +58,73 @@
             width: 100%;
             height: 100%;
             background:
-                radial-gradient(ellipse at 20% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 10% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 40%),
-                radial-gradient(ellipse at 90% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
+                radial-gradient(ellipse at 20% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(245, 158, 11, 0.04) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
-            animation: bgPulse 10s ease-in-out infinite;
         }
 
-        @keyframes bgPulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.7;
-            }
-        }
-
-        /* 3D Grid Background */
-        .bg-grid {
+        /* Matrix Rain Canvas */
+        #matrix-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image:
-                linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
             pointer-events: none;
             z-index: -2;
-            perspective: 500px;
-            transform: rotateX(60deg) scale(2.5);
-            transform-origin: center top;
-            animation: gridMove 20s linear infinite;
+            opacity: 0.15;
         }
 
-        @keyframes gridMove {
-            0% {
-                background-position: 0 0;
-            }
-
-            100% {
-                background-position: 60px 60px;
-            }
-        }
-
-        /* Floating Orbs */
+        /* Soft Floating Orbs */
         .floating-orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(80px);
+            filter: blur(100px);
             pointer-events: none;
             z-index: -1;
-            animation: orbFloat 15s ease-in-out infinite;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(16, 185, 129, 0.08);
+            top: 5%;
+            left: 5%;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: rgba(99, 102, 241, 0.06);
+            top: 50%;
+            right: 5%;
+            animation-delay: 7s;
+        }
+
+        .orb-3 {
+            width: 450px;
+            height: 450px;
+            background: rgba(245, 158, 11, 0.05);
+            bottom: 10%;
+            left: 25%;
+            animation-delay: 14s;
+        }
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translate(20px, -20px) scale(1.1);
+                opacity: 1;
+            }
         }
 
         .orb-1 {
@@ -1258,7 +1266,7 @@
 
 <body>
 
-    <div class="bg-grid"></div>
+    <canvas id="matrix-canvas"></canvas>
     <div class="floating-orb orb-1"></div>
     <div class="floating-orb orb-2"></div>
     <div class="floating-orb orb-3"></div>
@@ -1668,7 +1676,8 @@
                 <div class="section-header animate-on-scroll">
                     <h2>Get In Touch</h2>
                     <p>Interested in connecting or collaborating? You can reach me directly at
-                        <strong>tarqulopi77@gmail.com</strong></p>
+                        <strong>tarqulopi77@gmail.com</strong>
+                    </p>
                 </div>
                 <div class="contact-grid animate-on-scroll">
                     <div class="contact-info">
@@ -1723,13 +1732,44 @@
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
+        // Matrix Rain Animation
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()タチツテトナニヌネノ';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#10b981';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
         window.addEventListener('load', () => document.querySelector('.preloader').classList.add('hide'));
 
         new Typed('.typing', {
-            strings: ['AI & Automation Engineer', 'Python Developer', 'SQA Engineer', 'Problem Solver'],
+            strings: ['AI & Automation Engineer', 'Python Developer', 'Machine Learning Engineer', 'Problem Solver'],
             typeSpeed: 60,
             backSpeed: 40,
-            loop: true
+            loop: true,
+            showCursor: false
         });
 
         const menuBtn = document.querySelector('.menu-btn');
