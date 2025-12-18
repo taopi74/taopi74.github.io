@@ -673,71 +673,134 @@
             line-height: 1.5;
         }
 
-        /* About Section */
+        /* About Section - 3D Isolated */
         #about {
             background: var(--bg-dark);
+            perspective: 1000px;
         }
 
         .about-content {
             display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 50px;
+            grid-template-columns: 380px 1fr;
+            gap: 60px;
             align-items: center;
         }
 
         .about-image {
             position: relative;
+            transform-style: preserve-3d;
+            animation: floatImage 8s ease-in-out infinite;
+        }
+
+        @keyframes floatImage {
+
+            0%,
+            100% {
+                transform: translateY(0) rotateY(0) rotateX(0);
+            }
+
+            25% {
+                transform: translateY(-15px) rotateY(3deg) rotateX(2deg);
+            }
+
+            50% {
+                transform: translateY(-5px) rotateY(-2deg) rotateX(-1deg);
+            }
+
+            75% {
+                transform: translateY(-12px) rotateY(2deg) rotateX(1deg);
+            }
         }
 
         .about-image::before {
             content: '';
             position: absolute;
-            inset: -15px;
+            inset: -20px;
             background: var(--gradient);
-            border-radius: 20px;
+            border-radius: 25px;
             z-index: -1;
-            opacity: 0.3;
-            filter: blur(30px);
+            opacity: 0.4;
+            filter: blur(40px);
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.05);
+            }
         }
 
         .about-image img {
             width: 100%;
-            border-radius: 20px;
-            border: 3px solid var(--border);
+            border-radius: 25px;
+            border: 3px solid rgba(16, 185, 129, 0.3);
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(16, 185, 129, 0.1);
+            transition: 0.5s;
+        }
+
+        .about-image:hover img {
+            border-color: var(--primary);
+            box-shadow:
+                0 35px 70px rgba(16, 185, 129, 0.3),
+                0 0 50px rgba(16, 185, 129, 0.2);
+        }
+
+        .about-text {
+            transform-style: preserve-3d;
         }
 
         .about-text h3 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin-bottom: 20px;
             color: var(--primary);
+            text-shadow: 0 0 20px var(--primary-glow);
         }
 
         .about-text p {
             color: var(--text-secondary);
-            margin-bottom: 15px;
-            line-height: 1.7;
+            margin-bottom: 18px;
+            line-height: 1.8;
         }
 
         .about-info-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin: 25px 0;
+            gap: 15px;
+            margin: 30px 0;
         }
 
         .info-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px;
-            background: var(--bg-card);
-            border-radius: 10px;
-            border: 1px solid var(--border);
+            gap: 12px;
+            padding: 15px;
+            background: linear-gradient(145deg, rgba(17, 17, 17, 0.9), rgba(25, 25, 25, 0.8));
+            border-radius: 14px;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15);
         }
 
         .info-item i {
             color: var(--primary);
-            font-size: 1rem;
+            font-size: 1.1rem;
+            filter: drop-shadow(0 0 5px var(--primary-glow));
         }
 
         .info-item span {
@@ -747,6 +810,62 @@
 
         .info-item strong {
             color: var(--text-primary);
+        }
+
+        /* Research Section */
+        .research-card {
+            background: linear-gradient(145deg, rgba(17, 17, 17, 0.95), rgba(25, 25, 25, 0.9));
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            transform-style: preserve-3d;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s;
+        }
+
+        .research-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(16, 185, 129, 0.15);
+            border-color: var(--primary);
+        }
+
+        .research-card h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .research-card h4 i {
+            filter: drop-shadow(0 0 10px var(--primary));
+        }
+
+        .research-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: #000;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .publication-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--primary-glow);
         }
 
         /* Contact Section */
@@ -1395,10 +1514,13 @@
                     </div>
                     <div class="about-text">
                         <h3>AI & Automation Engineer</h3>
-                        <p>I am an AI and Automation Engineer with a BSc in Computer Science & Engineering from Green
-                            University of Bangladesh (GUB). Currently working at Care Guide and Dhakarobotics.</p>
-                        <p>I specialize in AI Agent development, testing automation, and full-stack development using
-                            cutting-edge technologies like Google Gemini, Groq, and Selenium.</p>
+                        <p>I am an experienced AI Engineer with expertise in machine learning and MLOps. My work focuses
+                            on developing predictive models, agentic AI, and automating decision systems for various
+                            applications while ensuring regulatory compliance and optimizing workflows.</p>
+                        <p>My research interests include <strong>reinforcement learning</strong>, <strong>computer
+                                vision</strong>, <strong>natural language processing</strong>, and <strong>large
+                                language models</strong>. I am passionate about bridging the gap between cutting-edge AI
+                            research and real-world impact.</p>
                         <div class="about-info-grid">
                             <div class="info-item">
                                 <i class="fas fa-user"></i>
@@ -1417,7 +1539,22 @@
                                 <span><strong>Degree:</strong> BSc in CSE (GUB)</span>
                             </div>
                         </div>
-                        <a href="#contact" class="btn btn-primary"><i class="fas fa-envelope"></i> Get In Touch</a>
+
+                        <!-- Research Card -->
+                        <div class="research-card">
+                            <h4><i class="fas fa-flask"></i> Research & Publication</h4>
+                            <p><strong>Key Publication:</strong> Co-author of the research paper titled <em>"Enhanced
+                                    Road Lane Marking Detection System: A CNN-Based Approach for Safe Driving"</em>,
+                                presented at the 2023 5th International Conference on Sustainable Technologies for
+                                Industry 5.0 (STI) and published in <strong>IEEE Xplore</strong>.</p>
+                            <a href="https://ieeexplore.ieee.org/document/10464405" target="_blank"
+                                class="publication-link">
+                                <i class="fas fa-external-link-alt"></i> View on IEEE Xplore
+                            </a>
+                        </div>
+
+                        <a href="#contact" class="btn btn-primary" style="margin-top: 25px;"><i
+                                class="fas fa-envelope"></i> Get In Touch</a>
                     </div>
                 </div>
             </div>
