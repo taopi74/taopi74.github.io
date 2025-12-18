@@ -50,7 +50,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -65,7 +64,6 @@
             z-index: -1;
         }
 
-        /* Preloader */
         .preloader {
             position: fixed;
             top: 0;
@@ -100,14 +98,12 @@
             }
         }
 
-        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
@@ -158,7 +154,6 @@
             color: var(--text-primary);
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -173,6 +168,23 @@
             max-width: 800px;
         }
 
+        .hero-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            margin: 0 auto 30px;
+            overflow: hidden;
+            box-shadow: 0 0 40px var(--primary-glow);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .hero-badge {
             display: inline-block;
             padding: 8px 20px;
@@ -182,7 +194,7 @@
             color: var(--primary);
             font-size: 0.9rem;
             margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
+            animation: fadeInUp 1s ease 0.1s both;
         }
 
         .hero h1 {
@@ -262,7 +274,6 @@
             }
         }
 
-        /* Section Styles */
         section {
             padding: 100px 0;
         }
@@ -283,7 +294,7 @@
             font-size: 1.1rem;
         }
 
-        /* ===== EXPERIENCE SECTION ===== */
+        /* Experience Section */
         #experience {
             background: linear-gradient(180deg, var(--bg-dark) 0%, #0f0f0f 100%);
         }
@@ -291,7 +302,7 @@
         .experience-grid {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -300,9 +311,9 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 30px;
+            padding: 25px;
             display: flex;
-            gap: 25px;
+            gap: 20px;
             align-items: flex-start;
             transition: all 0.4s;
             position: relative;
@@ -332,24 +343,17 @@
         }
 
         .exp-logo {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             background: var(--bg-card-hover);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--primary);
             flex-shrink: 0;
             border: 1px solid var(--border);
-        }
-
-        .exp-logo img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            border-radius: 8px;
         }
 
         .exp-content {
@@ -362,45 +366,47 @@
             align-items: flex-start;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .exp-title {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--primary);
         }
 
         .exp-company {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .exp-company i {
+            margin-right: 5px;
         }
 
         .exp-badge {
-            padding: 6px 16px;
+            padding: 5px 14px;
             background: var(--primary);
             color: #000;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
+        }
+
+        .exp-duration {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
         }
 
         .exp-description {
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.6;
+            font-size: 0.9rem;
         }
 
-        .exp-description ul {
-            margin-top: 10px;
-            padding-left: 20px;
-        }
-
-        .exp-description li {
-            margin-bottom: 8px;
-        }
-
-        /* ===== SKILLS SECTION ===== */
+        /* Skills Section */
         #skills {
             background: var(--bg-dark);
         }
@@ -416,9 +422,9 @@
         }
 
         .skill-category h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--text-primary);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -428,95 +434,59 @@
             color: var(--primary);
         }
 
-        /* Skills Icon Grid - Dynamic Glow Style */
         .skills-icon-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         .skill-icon-card {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             background: var(--bg-card);
             border: 2px solid var(--primary);
-            border-radius: 16px;
+            border-radius: 14px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             transition: all 0.4s;
             cursor: default;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-icon-card::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: linear-gradient(45deg, var(--primary), transparent, var(--primary));
-            border-radius: 16px;
-            z-index: -1;
-            opacity: 0;
-            transition: 0.4s;
         }
 
         .skill-icon-card:hover {
             transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 0 30px var(--primary-glow), 0 0 60px rgba(16, 185, 129, 0.2);
-            border-color: var(--primary);
-        }
-
-        .skill-icon-card:hover::before {
-            opacity: 1;
-            animation: rotate 3s linear infinite;
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .skill-icon-card img {
-            width: 45px;
-            height: 45px;
-            object-fit: contain;
+            box-shadow: 0 0 30px var(--primary-glow);
         }
 
         .skill-icon-card i {
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: var(--primary);
         }
 
         .skill-icon-card span {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--text-secondary);
             text-align: center;
         }
 
-        /* ===== PROJECTS SECTION ===== */
+        /* Projects Section */
         #projects {
             background: linear-gradient(180deg, #0f0f0f 0%, var(--bg-dark) 100%);
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
 
         .project-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
             transition: all 0.4s;
         }
@@ -551,7 +521,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             opacity: 0;
             transition: 0.4s;
         }
@@ -561,15 +531,15 @@
         }
 
         .project-link {
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             text-decoration: none;
             transform: scale(0);
             transition: 0.4s;
@@ -585,46 +555,46 @@
         }
 
         .project-info {
-            padding: 25px;
+            padding: 20px;
         }
 
         .project-badge {
             display: inline-block;
-            padding: 5px 14px;
+            padding: 4px 12px;
             background: rgba(16, 185, 129, 0.15);
             color: var(--primary);
-            border-radius: 20px;
-            font-size: 0.75rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .project-info h4 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
         }
 
         .project-tech {
             color: var(--accent);
-            font-size: 0.85rem;
-            margin-bottom: 10px;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
         }
 
         .project-info p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
 
-        /* ===== ABOUT SECTION ===== */
+        /* About Section */
         #about {
             background: var(--bg-dark);
         }
 
         .about-content {
             display: grid;
-            grid-template-columns: 400px 1fr;
-            gap: 60px;
+            grid-template-columns: 350px 1fr;
+            gap: 50px;
             align-items: center;
         }
 
@@ -650,49 +620,49 @@
         }
 
         .about-text h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
 
         .about-text p {
             color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.8;
+            margin-bottom: 15px;
+            line-height: 1.7;
         }
 
         .about-info-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 30px 0;
+            gap: 12px;
+            margin: 25px 0;
         }
 
         .info-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 15px;
+            gap: 10px;
+            padding: 12px;
             background: var(--bg-card);
-            border-radius: 12px;
+            border-radius: 10px;
             border: 1px solid var(--border);
         }
 
         .info-item i {
             color: var(--primary);
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .info-item span {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .info-item strong {
             color: var(--text-primary);
         }
 
-        /* ===== CONTACT SECTION ===== */
+        /* Contact Section */
         #contact {
             background: linear-gradient(180deg, var(--bg-dark) 0%, #0f0f0f 100%);
         }
@@ -700,20 +670,20 @@
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            gap: 50px;
+            gap: 40px;
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .contact-card {
-            padding: 30px;
+            padding: 25px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 14px;
             text-align: center;
             transition: 0.3s;
         }
@@ -724,39 +694,41 @@
         }
 
         .contact-icon {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             background: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
+            margin: 0 auto 12px;
         }
 
         .contact-icon i {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #000;
         }
 
         .contact-card h4 {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-size: 1rem;
         }
 
         .contact-card p {
             color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         .contact-socials {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
+            gap: 12px;
+            margin-top: 12px;
         }
 
         .contact-socials a {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background: var(--bg-card-hover);
             border: 1px solid var(--border);
             border-radius: 50%;
@@ -777,25 +749,25 @@
         .contact-form form {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .input-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 15px;
         }
 
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            padding: 18px 20px;
+            padding: 15px 18px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 10px;
             color: var(--text-primary);
             font-family: inherit;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: 0.3s;
         }
 
@@ -812,7 +784,7 @@
         }
 
         .contact-form textarea {
-            min-height: 150px;
+            min-height: 130px;
             resize: vertical;
         }
 
@@ -820,27 +792,27 @@
             align-self: flex-start;
         }
 
-        /* Footer */
         footer {
-            padding: 30px 0;
+            padding: 25px 0;
             border-top: 1px solid var(--border);
             text-align: center;
         }
 
         footer p {
             color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         .footer-socials {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
         }
 
         .footer-socials a {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 50%;
@@ -858,7 +830,6 @@
             transform: translateY(-3px);
         }
 
-        /* Scroll Animation */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(50px);
@@ -870,7 +841,6 @@
             transform: translateY(0);
         }
 
-        /* Responsive */
         @media (max-width: 992px) {
             .about-content {
                 grid-template-columns: 1fr;
@@ -878,7 +848,7 @@
             }
 
             .about-image {
-                max-width: 350px;
+                max-width: 300px;
                 margin: 0 auto;
             }
 
@@ -934,12 +904,17 @@
             }
 
             .skill-icon-card {
-                width: 85px;
-                height: 85px;
+                width: 80px;
+                height: 80px;
             }
 
             .skill-icon-card i {
-                font-size: 1.8rem;
+                font-size: 1.7rem;
+            }
+
+            .hero-image {
+                width: 150px;
+                height: 150px;
             }
         }
 
@@ -957,12 +932,11 @@
             }
 
             .skill-icon-card {
-                width: 75px;
-                height: 75px;
+                width: 70px;
+                height: 70px;
             }
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -981,13 +955,10 @@
 <body>
 
     <div class="bg-animation"></div>
-
-    <!-- Preloader -->
     <div class="preloader">
         <div class="loader"></div>
     </div>
 
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <ul class="nav-links">
@@ -998,15 +969,15 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
+            <div class="menu-btn"><i class="fas fa-bars"></i></div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header id="hero" class="hero">
         <div class="hero-content">
+            <div class="hero-image">
+                <img src="profile.png" alt="Tarqul Alam Opi">
+            </div>
             <span class="hero-badge">👋 Welcome to my Portfolio</span>
             <h1>Tarqul Alam Opi</h1>
             <p class="hero-subtitle">I'm a <span class="typing"></span></p>
@@ -1026,71 +997,126 @@
                     <p>My professional journey</p>
                 </div>
                 <div class="experience-grid">
+                    <!-- Care Guide -->
                     <div class="exp-card animate-on-scroll">
-                        <div class="exp-logo">
-                            <i class="fas fa-robot"></i>
-                        </div>
+                        <div class="exp-logo"><i class="fas fa-robot"></i></div>
                         <div class="exp-content">
                             <div class="exp-header">
                                 <div>
                                     <h3 class="exp-title">AI & Automation Engineer</h3>
-                                    <p class="exp-company">Professional Experience [2023 - Current]</p>
+                                    <p class="exp-company"><i class="fas fa-building"></i> Care Guide</p>
                                 </div>
                                 <span class="exp-badge">Full-time</span>
                             </div>
-                            <div class="exp-description">
-                                <p>Building AI-powered tools and automation solutions. Developing intelligent systems
-                                    using Python, Google Gemini, and Groq APIs. Creating smart automation pipelines for
-                                    various industries.</p>
-                                <ul>
-                                    <li>Developed AI agents with voice interface capabilities</li>
-                                    <li>Built automated testing frameworks using Selenium</li>
-                                    <li>Implemented CI/CD pipelines for streamlined deployments</li>
-                                </ul>
-                            </div>
+                            <p class="exp-duration"><i class="far fa-calendar-alt"></i> Sep 2025 - Present · 4 mos</p>
+                            <p class="exp-description">Building AI-powered tools and automation solutions to streamline
+                                company processes.</p>
                         </div>
                     </div>
 
+                    <!-- Dhakarobotics -->
                     <div class="exp-card animate-on-scroll">
-                        <div class="exp-logo">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
+                        <div class="exp-logo"><i class="fab fa-python"></i></div>
                         <div class="exp-content">
                             <div class="exp-header">
                                 <div>
-                                    <h3 class="exp-title">Career Growth Program</h3>
-                                    <p class="exp-company">Ostad [Ongoing]</p>
+                                    <h3 class="exp-title">Python Developer</h3>
+                                    <p class="exp-company"><i class="fas fa-building"></i> Dhakarobotics</p>
                                 </div>
-                                <span class="exp-badge">Learning</span>
+                                <span class="exp-badge">Full-time</span>
                             </div>
-                            <div class="exp-description">
-                                <p>Advancing professional skills through structured learning programs focusing on modern
-                                    technologies and industry best practices.</p>
-                                <ul>
-                                    <li>Advanced AI & Machine Learning techniques</li>
-                                    <li>Professional software development practices</li>
-                                    <li>Industry-standard project management</li>
-                                </ul>
-                            </div>
+                            <p class="exp-duration"><i class="far fa-calendar-alt"></i> Nov 2024 - Present · 1 yr 2 mos
+                            </p>
+                            <p class="exp-description">Developing Python-based automation solutions and robotics
+                                applications. On-site at Uttara, Dhaka.</p>
                         </div>
                     </div>
 
+                    <!-- HRSOFTBD - SQA & Support -->
                     <div class="exp-card animate-on-scroll">
-                        <div class="exp-logo">
-                            <i class="fas fa-university"></i>
+                        <div class="exp-logo"><i class="fas fa-bug"></i></div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <div>
+                                    <h3 class="exp-title">SQA & Support Engineer</h3>
+                                    <p class="exp-company"><i class="fas fa-building"></i> HRSOFTBD</p>
+                                </div>
+                                <span class="exp-badge">Full-time</span>
+                            </div>
+                            <p class="exp-duration"><i class="far fa-calendar-alt"></i> Jul 2024 - Present · 1 yr 6 mos
+                            </p>
+                            <p class="exp-description">Software Quality Assurance and technical support for HR software
+                                solutions. On-site at Mohammadpur, Dhaka.</p>
                         </div>
+                    </div>
+
+                    <!-- HRSOFTBD - Web Dev -->
+                    <div class="exp-card animate-on-scroll">
+                        <div class="exp-logo"><i class="fas fa-code"></i></div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <div>
+                                    <h3 class="exp-title">SQA & Jr. Web Developer</h3>
+                                    <p class="exp-company"><i class="fas fa-building"></i> HRSOFTBD</p>
+                                </div>
+                                <span class="exp-badge">Full-time</span>
+                            </div>
+                            <p class="exp-duration"><i class="far fa-calendar-alt"></i> Oct 2024 - Mar 2025 · 6 mos</p>
+                            <p class="exp-description">Quality assurance and junior web development for enterprise
+                                applications.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bangladesh Computer Council -->
+                    <div class="exp-card animate-on-scroll">
+                        <div class="exp-logo"><i class="fas fa-laptop-code"></i></div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <div>
+                                    <h3 class="exp-title">Software Test Engineer</h3>
+                                    <p class="exp-company"><i class="fas fa-building"></i> Bangladesh Computer Council
+                                    </p>
+                                </div>
+                                <span class="exp-badge">Internship</span>
+                            </div>
+                            <p class="exp-duration"><i class="far fa-calendar-alt"></i> Nov 2023 - Dec 2023 · 2 mos</p>
+                            <p class="exp-description">Software testing and QA internship at ICT Tower, Agargaon.
+                                Skills: Software Testing, Quality Assurance.</p>
+                        </div>
+                    </div>
+
+                    <!-- GUCC_PC -->
+                    <div class="exp-card animate-on-scroll">
+                        <div class="exp-logo"><i class="fas fa-users"></i></div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <div>
+                                    <h3 class="exp-title">Joint General Secretary</h3>
+                                    <p class="exp-company"><i class="fas fa-building"></i> GUCC_PC (Programming Club)
+                                    </p>
+                                </div>
+                                <span class="exp-badge">Volunteer</span>
+                            </div>
+                            <p class="exp-duration"><i class="far fa-calendar-alt"></i> Jan 2023 - Nov 2023 · 11 mos</p>
+                            <p class="exp-description">Leadership role in university programming club. Application
+                                Development and Computer Engineering activities.</p>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="exp-card animate-on-scroll">
+                        <div class="exp-logo"><i class="fas fa-university"></i></div>
                         <div class="exp-content">
                             <div class="exp-header">
                                 <div>
                                     <h3 class="exp-title">B.Sc. in Computer Science & Engineering</h3>
-                                    <p class="exp-company">Green University of Bangladesh (GUB)</p>
+                                    <p class="exp-company"><i class="fas fa-graduation-cap"></i> Green University of
+                                        Bangladesh (GUB)</p>
                                 </div>
                                 <span class="exp-badge">Completed</span>
                             </div>
-                            <div class="exp-description">
-                                <p>Comprehensive education in Computer Science fundamentals with focus on Software
-                                    Engineering, Artificial Intelligence, and modern programming paradigms.</p>
-                            </div>
+                            <p class="exp-description">Comprehensive education in Software Engineering, AI, and Computer
+                                Science fundamentals.</p>
                         </div>
                     </div>
                 </div>
@@ -1105,146 +1131,56 @@
                     <p>Technologies I work with</p>
                 </div>
                 <div class="skills-container">
-                    <!-- Programming Languages -->
                     <div class="skill-category animate-on-scroll">
                         <h3><i class="fas fa-code"></i> Programming Languages</h3>
                         <div class="skills-icon-grid">
-                            <div class="skill-icon-card">
-                                <i class="fab fa-python"></i>
-                                <span>Python</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-copyright"></i>
-                                <span>C++</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fab fa-java"></i>
-                                <span>Java</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-mobile-alt"></i>
-                                <span>Dart</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fab fa-js-square"></i>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fab fa-php"></i>
-                                <span>PHP</span>
-                            </div>
+                            <div class="skill-icon-card"><i class="fab fa-python"></i><span>Python</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-copyright"></i><span>C++</span></div>
+                            <div class="skill-icon-card"><i class="fab fa-java"></i><span>Java</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-mobile-alt"></i><span>Dart</span></div>
+                            <div class="skill-icon-card"><i class="fab fa-js-square"></i><span>JavaScript</span></div>
+                            <div class="skill-icon-card"><i class="fab fa-php"></i><span>PHP</span></div>
                         </div>
                     </div>
-
-                    <!-- Frameworks & Tools -->
                     <div class="skill-category animate-on-scroll">
                         <h3><i class="fas fa-tools"></i> Frameworks & Tools</h3>
                         <div class="skills-icon-grid">
-                            <div class="skill-icon-card">
-                                <i class="fab fa-python"></i>
-                                <span>Django</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-mobile-alt"></i>
-                                <span>Flutter</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fab fa-react"></i>
-                                <span>React</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fab fa-html5"></i>
-                                <span>HTML5</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fab fa-css3-alt"></i>
-                                <span>CSS3</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fab fa-wordpress"></i>
-                                <span>WordPress</span>
-                            </div>
+                            <div class="skill-icon-card"><i class="fab fa-python"></i><span>Django</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-mobile-alt"></i><span>Flutter</span></div>
+                            <div class="skill-icon-card"><i class="fab fa-react"></i><span>React</span></div>
+                            <div class="skill-icon-card"><i class="fab fa-html5"></i><span>HTML5</span></div>
+                            <div class="skill-icon-card"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+                            <div class="skill-icon-card"><i class="fab fa-wordpress"></i><span>WordPress</span></div>
                         </div>
                     </div>
-
-                    <!-- AI & Machine Learning -->
                     <div class="skill-category animate-on-scroll">
                         <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
                         <div class="skills-icon-grid">
-                            <div class="skill-icon-card">
-                                <i class="fas fa-gem"></i>
-                                <span>Gemini</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-bolt"></i>
-                                <span>Groq</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-robot"></i>
-                                <span>AI Agents</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-comments"></i>
-                                <span>NLP</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Streamlit</span>
-                            </div>
+                            <div class="skill-icon-card"><i class="fas fa-gem"></i><span>Gemini</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-bolt"></i><span>Groq</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-robot"></i><span>AI Agents</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-comments"></i><span>NLP</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-chart-line"></i><span>Streamlit</span></div>
                         </div>
                     </div>
-
-                    <!-- Testing & QA -->
                     <div class="skill-category animate-on-scroll">
                         <h3><i class="fas fa-vial"></i> Testing & Automation</h3>
                         <div class="skills-icon-grid">
-                            <div class="skill-icon-card">
-                                <i class="fas fa-cogs"></i>
-                                <span>Selenium</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-paper-plane"></i>
-                                <span>Postman</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-bug"></i>
-                                <span>Bugzilla</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Manual QA</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-plug"></i>
-                                <span>API Testing</span>
-                            </div>
+                            <div class="skill-icon-card"><i class="fas fa-cogs"></i><span>Selenium</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-paper-plane"></i><span>Postman</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-bug"></i><span>Bugzilla</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-check-circle"></i><span>Manual QA</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-plug"></i><span>API Testing</span></div>
                         </div>
                     </div>
-
-                    <!-- DevOps & Tools -->
                     <div class="skill-category animate-on-scroll">
-                        <h3><i class="fas fa-server"></i> DevOps & Other</h3>
+                        <h3><i class="fas fa-server"></i> DevOps & Database</h3>
                         <div class="skills-icon-grid">
-                            <div class="skill-icon-card">
-                                <i class="fab fa-github"></i>
-                                <span>GitHub</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fab fa-docker"></i>
-                                <span>Docker</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-infinity"></i>
-                                <span>CI/CD</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-database"></i>
-                                <span>SQL</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="fas fa-fire"></i>
-                                <span>Firebase</span>
-                            </div>
+                            <div class="skill-icon-card"><i class="fab fa-github"></i><span>GitHub</span></div>
+                            <div class="skill-icon-card"><i class="fab fa-docker"></i><span>Docker</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-infinity"></i><span>CI/CD</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-database"></i><span>SQL</span></div>
+                            <div class="skill-icon-card"><i class="fas fa-fire"></i><span>Firebase</span></div>
                         </div>
                     </div>
                 </div>
@@ -1274,11 +1210,9 @@
                             <span class="project-badge">🤖 AI Agent</span>
                             <h4>AI Interviewer Agent</h4>
                             <p class="project-tech">Python | Django | Google Gemini API</p>
-                            <p>Full-stack AI agent with voice interface for real-time interviews and performance
-                                feedback.</p>
+                            <p>Full-stack AI agent with voice interface for real-time interviews.</p>
                         </div>
                     </div>
-
                     <div class="project-card animate-on-scroll">
                         <div class="project-image">
                             <img src="https://placehold.co/600x400/1a1a2e/8b5cf6?text=Web+Testing+AI&font=poppins"
@@ -1294,14 +1228,13 @@
                             <span class="project-badge">🌐 Live Demo</span>
                             <h4>Web Testing AI Portal</h4>
                             <p class="project-tech">Python | Streamlit | Automation</p>
-                            <p>Interactive web app for AI-powered automated testing and test generation.</p>
+                            <p>Interactive web app for AI-powered automated testing.</p>
                         </div>
                     </div>
-
                     <div class="project-card animate-on-scroll">
                         <div class="project-image">
                             <img src="https://placehold.co/600x400/1a1a2e/f59e0b?text=Test+Automation&font=poppins"
-                                alt="Test Automation Suite">
+                                alt="Test Automation">
                             <div class="project-overlay">
                                 <a href="https://github.com/taopi74" target="_blank" class="project-link"><i
                                         class="fab fa-github"></i></a>
@@ -1311,10 +1244,9 @@
                             <span class="project-badge">🔍 Framework</span>
                             <h4>Test Automation Suite</h4>
                             <p class="project-tech">Selenium | Python | CI/CD</p>
-                            <p>Robust framework for automated software testing with comprehensive coverage.</p>
+                            <p>Robust framework for automated software testing.</p>
                         </div>
                     </div>
-
                     <div class="project-card animate-on-scroll">
                         <div class="project-image">
                             <img src="https://placehold.co/600x400/1a1a2e/ec4899?text=AI+Chatbot&font=poppins"
@@ -1328,10 +1260,9 @@
                             <span class="project-badge">✅ NLP</span>
                             <h4>AI-Powered Chatbot</h4>
                             <p class="project-tech">Python | NLP | Machine Learning</p>
-                            <p>Smart conversational chatbot using Natural Language Processing.</p>
+                            <p>Smart conversational chatbot using NLP techniques.</p>
                         </div>
                     </div>
-
                     <div class="project-card animate-on-scroll">
                         <div class="project-image">
                             <img src="https://placehold.co/600x400/1a1a2e/3b82f6?text=Inventory+App&font=poppins"
@@ -1345,10 +1276,9 @@
                             <span class="project-badge">📱 Mobile</span>
                             <h4>Inventory Management App</h4>
                             <p class="project-tech">Flutter | Firebase | QR Code</p>
-                            <p>Cross-platform mobile app for inventory tracking with QR scanning.</p>
+                            <p>Cross-platform mobile app for inventory tracking.</p>
                         </div>
                     </div>
-
                     <div class="project-card animate-on-scroll">
                         <div class="project-image">
                             <img src="https://placehold.co/600x400/1a1a2e/14b8a6?text=IoT+Project&font=poppins"
@@ -1362,7 +1292,7 @@
                             <span class="project-badge">📡 IoT</span>
                             <h4>Smart Automation System</h4>
                             <p class="project-tech">IoT | Python | Embedded</p>
-                            <p>Intelligent automation with IoT integration and real-time monitoring.</p>
+                            <p>Intelligent automation with IoT integration.</p>
                         </div>
                     </div>
                 </div>
@@ -1378,17 +1308,14 @@
                 </div>
                 <div class="about-content animate-on-scroll">
                     <div class="about-image">
-                        <img src="https://placehold.co/400x400/1a1a2e/10b981?text=OPI&font=poppins"
-                            alt="Tarqul Alam Opi">
+                        <img src="profile.png" alt="Tarqul Alam Opi">
                     </div>
                     <div class="about-text">
                         <h3>AI & Automation Engineer</h3>
                         <p>I am an AI and Automation Engineer with a BSc in Computer Science & Engineering from Green
-                            University of Bangladesh (GUB). Passionate about building intelligent systems and solving
-                            complex problems.</p>
-                        <p>I specialize in AI Agent development, testing automation, and full-stack development. I work
-                            with cutting-edge technologies like Google Gemini, Groq, and various automation frameworks
-                            to create innovative solutions.</p>
+                            University of Bangladesh (GUB). Currently working at Care Guide and Dhakarobotics.</p>
+                        <p>I specialize in AI Agent development, testing automation, and full-stack development using
+                            cutting-edge technologies like Google Gemini, Groq, and Selenium.</p>
                         <div class="about-info-grid">
                             <div class="info-item">
                                 <i class="fas fa-user"></i>
@@ -1400,11 +1327,11 @@
                             </div>
                             <div class="info-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span><strong>Location:</strong> Bangladesh</span>
+                                <span><strong>Location:</strong> Dhaka, Bangladesh</span>
                             </div>
                             <div class="info-item">
                                 <i class="fas fa-graduation-cap"></i>
-                                <span><strong>Degree:</strong> BSc in CSE</span>
+                                <span><strong>Degree:</strong> BSc in CSE (GUB)</span>
                             </div>
                         </div>
                         <a href="#contact" class="btn btn-primary"><i class="fas fa-envelope"></i> Get In Touch</a>
@@ -1430,7 +1357,7 @@
                         <div class="contact-card">
                             <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                             <h4>Location</h4>
-                            <p>Bangladesh</p>
+                            <p>Dhaka, Bangladesh</p>
                         </div>
                         <div class="contact-card">
                             <div class="contact-icon"><i class="fas fa-globe"></i></div>
@@ -1451,9 +1378,8 @@
                             </div>
                             <input type="text" placeholder="Subject" required>
                             <textarea placeholder="Your Message" required></textarea>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-paper-plane"></i> Send Message
-                            </button>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send
+                                Message</button>
                         </form>
                     </div>
                 </div>
@@ -1461,7 +1387,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Tarqul Alam Opi. All Rights Reserved.</p>
@@ -1475,63 +1400,42 @@
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            document.querySelector('.preloader').classList.add('hide');
-        });
+        window.addEventListener('load', () => document.querySelector('.preloader').classList.add('hide'));
 
-        // Typing effect
         new Typed('.typing', {
-            strings: ['AI & Automation Engineer', 'Problem Solver', 'AI Agent Developer', 'Testing Automation Expert'],
+            strings: ['AI & Automation Engineer', 'Python Developer', 'SQA Engineer', 'Problem Solver'],
             typeSpeed: 60,
             backSpeed: 40,
             loop: true
         });
 
-        // Mobile menu toggle
         const menuBtn = document.querySelector('.menu-btn');
         const navLinks = document.querySelector('.nav-links');
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu on link click
+        menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
 
-        // Active nav link on scroll
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section, header');
             const navLinks = document.querySelectorAll('.nav-links a');
             let current = '';
-
             sections.forEach(section => {
-                if (scrollY >= section.offsetTop - 150) {
-                    current = section.getAttribute('id');
-                }
+                if (scrollY >= section.offsetTop - 150) current = section.getAttribute('id');
             });
-
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
             });
         });
 
-        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('show');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-        // Contact form
         document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Thank you for your message! I will get back to you soon.');
