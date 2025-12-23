@@ -1424,6 +1424,40 @@
             }
         }
 
+        /* Heatmap Styles */
+        .lc-heatmap {
+            margin-top: 20px;
+        }
+
+        .heatmap-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+
+        .day-square {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            background: var(--bg-card-light);
+        }
+
+        .day-square.level-1 {
+            background: rgba(34, 197, 94, 0.2);
+        }
+
+        .day-square.level-2 {
+            background: rgba(34, 197, 94, 0.5);
+        }
+
+        .day-square.level-3 {
+            background: rgba(34, 197, 94, 0.8);
+        }
+
+        .day-square.level-4 {
+            background: #22c55e;
+        }
+
         /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -1557,7 +1591,79 @@
         </div>
     </section>
 
+    </section>
+
     <main>
+        <!-- Coding Profile Section (Moved to Top) -->
+        <section id="coding-profile">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-label"><i class="fas fa-code"></i> Coding Stats</span>
+                    <h2>Problem <span>Solving</span></h2>
+                    <p>My competitive programming journey on LeetCode</p>
+                </div>
+
+                <div class="lc-card animate-on-scroll" style="max-width: 700px; margin: 0 auto;">
+                    <div class="lc-header">
+                        <div class="lc-user-info">
+                            <div class="lc-avatar">
+                                <img src="https://assets.leetcode.com/users/taopi74/avatar_1706696773.png"
+                                    alt="LeetCode Avatar" onerror="this.src='profile.png'">
+                            </div>
+                            <div class="lc-details">
+                                <h4>taopi74</h4>
+                                <p>LeetCode Profile</p>
+                            </div>
+                        </div>
+                        <div class="lc-rank-badge" id="lc-rank">Rank: Loading...</div>
+                    </div>
+
+                    <div class="lc-stats-row">
+                        <div class="lc-circle-container">
+                            <svg class="lc-circle-svg" viewBox="0 0 120 120">
+                                <circle class="lc-circle-bg" cx="60" cy="60" r="54"></circle>
+                                <circle class="lc-circle-progress" id="lc-circle" cx="60" cy="60" r="54"></circle>
+                            </svg>
+                            <div class="lc-total-text">
+                                <span id="lc-total">0</span>
+                                <small>Solved</small>
+                            </div>
+                        </div>
+
+                        <div class="lc-breakdown">
+                            <div class="lc-stat-item">
+                                <span class="lc-label">Easy</span>
+                                <div class="lc-bar">
+                                    <div class="lc-fill easy" id="lc-easy-bar" style="width: 0%"></div>
+                                </div>
+                                <span class="lc-count" id="lc-easy">0</span>
+                            </div>
+                            <div class="lc-stat-item">
+                                <span class="lc-label">Medium</span>
+                                <div class="lc-bar">
+                                    <div class="lc-fill medium" id="lc-medium-bar" style="width: 0%"></div>
+                                </div>
+                                <span class="lc-count" id="lc-medium">0</span>
+                            </div>
+                            <div class="lc-stat-item">
+                                <span class="lc-label">Hard</span>
+                                <div class="lc-bar">
+                                    <div class="lc-fill hard" id="lc-hard-bar" style="width: 0%"></div>
+                                </div>
+                                <span class="lc-count" id="lc-hard">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Heatmap -->
+                    <div class="lc-heatmap">
+                        <div class="heatmap-grid" id="lc-heatmap-grid"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section id="about">
             <div class="container">
@@ -1676,69 +1782,7 @@
             </div>
         </section>
 
-        <!-- Coding Profile Section -->
-        <section id="coding-profile">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <span class="section-label"><i class="fas fa-code"></i> Coding Stats</span>
-                    <h2>Problem <span>Solving</span></h2>
-                    <p>My competitive programming journey on LeetCode</p>
-                </div>
-
-                <div class="lc-card animate-on-scroll" style="max-width: 600px; margin: 0 auto;">
-                    <div class="lc-header">
-                        <div class="lc-user-info">
-                            <div class="lc-avatar">
-                                <img src="https://assets.leetcode.com/users/taopi74/avatar_1706696773.png"
-                                    alt="LeetCode Avatar" onerror="this.src='profile.png'">
-                            </div>
-                            <div class="lc-details">
-                                <h4>taopi74</h4>
-                                <p>LeetCode Profile</p>
-                            </div>
-                        </div>
-                        <div class="lc-rank-badge" id="lc-rank">Rank: Loading...</div>
-                    </div>
-
-                    <div class="lc-stats-row">
-                        <div class="lc-circle-container">
-                            <svg class="lc-circle-svg" viewBox="0 0 120 120">
-                                <circle class="lc-circle-bg" cx="60" cy="60" r="54"></circle>
-                                <circle class="lc-circle-progress" id="lc-circle" cx="60" cy="60" r="54"></circle>
-                            </svg>
-                            <div class="lc-total-text">
-                                <span id="lc-total">0</span>
-                                <small>Solved</small>
-                            </div>
-                        </div>
-
-                        <div class="lc-breakdown">
-                            <div class="lc-stat-item">
-                                <span class="lc-label">Easy</span>
-                                <div class="lc-bar">
-                                    <div class="lc-fill easy" id="lc-easy-bar" style="width: 0%"></div>
-                                </div>
-                                <span class="lc-count" id="lc-easy">0</span>
-                            </div>
-                            <div class="lc-stat-item">
-                                <span class="lc-label">Medium</span>
-                                <div class="lc-bar">
-                                    <div class="lc-fill medium" id="lc-medium-bar" style="width: 0%"></div>
-                                </div>
-                                <span class="lc-count" id="lc-medium">0</span>
-                            </div>
-                            <div class="lc-stat-item">
-                                <span class="lc-label">Hard</span>
-                                <div class="lc-bar">
-                                    <div class="lc-fill hard" id="lc-hard-bar" style="width: 0%"></div>
-                                </div>
-                                <span class="lc-count" id="lc-hard">0</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Coding Profile Section has been moved up -->
 
         <!-- Experience Section -->
         <section id="experience">
@@ -2153,10 +2197,68 @@
                     const offset = circumference - (percent * circumference);
 
                     circle.style.strokeDashoffset = offset;
+
+                    // Render Heatmap
+                    renderHeatmap(data.submissionCalendar);
                 }
             } catch (error) {
                 console.error('Error fetching LeetCode stats:', error);
                 document.getElementById('lc-rank').textContent = 'Rank: N/A';
+            }
+        }
+
+        function renderHeatmap(calendarData) {
+            const grid = document.getElementById('lc-heatmap-grid');
+            grid.innerHTML = '';
+
+            // Get last 365 days
+            const today = new Date();
+            for (let i = 364; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+
+                // Convert to timestamp (seconds) to match API format keys
+                // API keys are timestamps of start of day? usually weird format, need to check
+                // Actually leetcode API usually returns unix timestamp string in seconds
+
+                // Simple check for now: try to match key by converting to epoch seconds range
+                // But efficient way: convert calendarData keys to readable dates or match logic
+
+                // Better approach:
+                // calendarData is { "1701234": 2, ... }
+                // Let's normalize it to a Map for easier lookup
+            }
+
+            // Simplified: Loop 160 squares for mobile friendly visualization or 365 for full
+            // Let's create a visual grid regardless of exact date matching for now to ensure UI structure, 
+            // then map data if possible. 
+            // Actually, let's map it correctly using the timestamp keys.
+
+            const submissionMap = new Map();
+            for (const [timestamp, count] of Object.entries(calendarData)) {
+                // Key is string unix timestamp in seconds
+                const ts = parseInt(timestamp);
+                const d = new Date(ts * 1000);
+                const dateKey = d.toISOString().split('T')[0];
+                submissionMap.set(dateKey, count);
+            }
+
+            for (let i = 0; i < 364; i++) { // Past year
+                const d = new Date();
+                d.setDate(d.getDate() - (364 - i));
+                const dateKey = d.toISOString().split('T')[0];
+
+                const count = submissionMap.get(dateKey) || 0;
+                let level = 0;
+                if (count > 0) level = 1;
+                if (count > 2) level = 2;
+                if (count > 5) level = 3;
+                if (count > 10) level = 4;
+
+                const square = document.createElement('div');
+                square.className = `day-square level-${level}`;
+                square.title = `${dateKey}: ${count} submissions`;
+                grid.appendChild(square);
             }
         }
 
