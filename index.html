@@ -1252,6 +1252,178 @@
             }
         }
 
+        /* LeetCode Section */
+        .lc-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .lc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lc-user-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .lc-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .lc-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .lc-details h4 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .lc-details p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .lc-rank-badge {
+            background: rgba(255, 161, 22, 0.1);
+            color: #ffa116;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .lc-stats-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .lc-circle-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+        }
+
+        .lc-circle-svg {
+            transform: rotate(-90deg);
+            width: 100%;
+            height: 100%;
+        }
+
+        .lc-circle-bg {
+            fill: none;
+            stroke: var(--bg-card-light);
+            stroke-width: 8;
+        }
+
+        .lc-circle-progress {
+            fill: none;
+            stroke: #ffa116;
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 339.292;
+            stroke-dashoffset: 339.292;
+            transition: stroke-dashoffset 1s ease;
+        }
+
+        .lc-total-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .lc-total-text span {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .lc-total-text small {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .lc-breakdown {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .lc-stat-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+        }
+
+        .lc-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            width: 60px;
+        }
+
+        .lc-count {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .lc-bar {
+            flex: 1;
+            height: 6px;
+            background: var(--bg-card-light);
+            border-radius: 3px;
+            margin: 0 12px;
+            overflow: hidden;
+        }
+
+        .lc-fill {
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        .lc-fill.easy {
+            background: #00b8a3;
+        }
+
+        .lc-fill.medium {
+            background: #ffc01e;
+        }
+
+        .lc-fill.hard {
+            background: #ef4743;
+        }
+
+        @media (max-width: 768px) {
+            .lc-stats-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -1498,6 +1670,70 @@
                             <span class="tech-tag">API Integration</span>
                             <span class="tech-tag">Selenium</span>
                             <span class="tech-tag">Web Scraping</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coding Profile Section -->
+        <section id="coding-profile">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-label"><i class="fas fa-code"></i> Coding Stats</span>
+                    <h2>Problem <span>Solving</span></h2>
+                    <p>My competitive programming journey on LeetCode</p>
+                </div>
+
+                <div class="lc-card animate-on-scroll" style="max-width: 600px; margin: 0 auto;">
+                    <div class="lc-header">
+                        <div class="lc-user-info">
+                            <div class="lc-avatar">
+                                <img src="https://assets.leetcode.com/users/taopi74/avatar_1706696773.png"
+                                    alt="LeetCode Avatar" onerror="this.src='profile.png'">
+                            </div>
+                            <div class="lc-details">
+                                <h4>taopi74</h4>
+                                <p>LeetCode Profile</p>
+                            </div>
+                        </div>
+                        <div class="lc-rank-badge" id="lc-rank">Rank: Loading...</div>
+                    </div>
+
+                    <div class="lc-stats-row">
+                        <div class="lc-circle-container">
+                            <svg class="lc-circle-svg" viewBox="0 0 120 120">
+                                <circle class="lc-circle-bg" cx="60" cy="60" r="54"></circle>
+                                <circle class="lc-circle-progress" id="lc-circle" cx="60" cy="60" r="54"></circle>
+                            </svg>
+                            <div class="lc-total-text">
+                                <span id="lc-total">0</span>
+                                <small>Solved</small>
+                            </div>
+                        </div>
+
+                        <div class="lc-breakdown">
+                            <div class="lc-stat-item">
+                                <span class="lc-label">Easy</span>
+                                <div class="lc-bar">
+                                    <div class="lc-fill easy" id="lc-easy-bar" style="width: 0%"></div>
+                                </div>
+                                <span class="lc-count" id="lc-easy">0</span>
+                            </div>
+                            <div class="lc-stat-item">
+                                <span class="lc-label">Medium</span>
+                                <div class="lc-bar">
+                                    <div class="lc-fill medium" id="lc-medium-bar" style="width: 0%"></div>
+                                </div>
+                                <span class="lc-count" id="lc-medium">0</span>
+                            </div>
+                            <div class="lc-stat-item">
+                                <span class="lc-label">Hard</span>
+                                <div class="lc-bar">
+                                    <div class="lc-fill hard" id="lc-hard-bar" style="width: 0%"></div>
+                                </div>
+                                <span class="lc-count" id="lc-hard">0</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1887,6 +2123,45 @@
             btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
             btn.disabled = false;
         });
+    </script>
+    <script>
+        async function fetchLeetCodeStats() {
+            try {
+                const response = await fetch('https://leetcode-stats-api.herokuapp.com/taopi74');
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    document.getElementById('lc-rank').textContent = `Rank: ${data.ranking.toLocaleString()}`;
+                    document.getElementById('lc-total').textContent = data.totalSolved;
+
+                    document.getElementById('lc-easy').textContent = data.easySolved;
+                    document.getElementById('lc-medium').textContent = data.mediumSolved;
+                    document.getElementById('lc-hard').textContent = data.hardSolved;
+
+                    // Update bars
+                    document.getElementById('lc-easy-bar').style.width = `${(data.easySolved / data.totalEasy) * 100}%`;
+                    document.getElementById('lc-medium-bar').style.width = `${(data.mediumSolved / data.totalMedium) * 100}%`;
+                    document.getElementById('lc-hard-bar').style.width = `${(data.hardSolved / data.totalHard) * 100}%`;
+
+                    // Update circle
+                    const circle = document.getElementById('lc-circle');
+                    const radius = 54;
+                    const circumference = 2 * Math.PI * radius; // ~339.292
+
+                    const totalQuestions = data.totalQuestions;
+                    const percent = data.totalSolved / totalQuestions;
+                    const offset = circumference - (percent * circumference);
+
+                    circle.style.strokeDashoffset = offset;
+                }
+            } catch (error) {
+                console.error('Error fetching LeetCode stats:', error);
+                document.getElementById('lc-rank').textContent = 'Rank: N/A';
+            }
+        }
+
+        // Call when in view or load
+        document.addEventListener('DOMContentLoaded', fetchLeetCodeStats);
     </script>
 </body>
 
