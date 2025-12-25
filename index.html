@@ -521,6 +521,84 @@
             transform: translateY(-2px);
         }
 
+        .tabs-container {
+            flex-wrap: wrap;
+            /* Make responsive */
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Services Styles */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-8px);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+        }
+
+        .service-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
         /* Tech Stack */
         .tech-stack-header {
             text-align: center;
@@ -2185,89 +2263,222 @@
                 </div>
 
                 <div class="tabs-container animate-on-scroll">
-                    <button class="tab-btn active"><i class="fas fa-cogs"></i> Skills</button>
-                    <button class="tab-btn"><i class="fas fa-concierge-bell"></i> Services</button>
-                    <button class="tab-btn"><i class="fas fa-briefcase"></i> Experience</button>
+                    <button class="tab-btn active" data-target="skills"><i class="fas fa-cogs"></i> Skills</button>
+                    <button class="tab-btn" data-target="services"><i class="fas fa-concierge-bell"></i>
+                        Services</button>
+                    <button class="tab-btn" data-target="experience"><i class="fas fa-briefcase"></i>
+                        Experience</button>
                 </div>
 
-                <div class="tech-stack-header animate-on-scroll">
-                    <h3><i class="fas fa-globe"></i> AI Technology Stack</h3>
-                    <p>Cutting-edge technologies I use to build intelligent solutions</p>
-                </div>
+                <!-- Tab Content Area -->
+                <div class="tab-display-area">
 
-                <div class="tech-grid">
-                    <div class="tech-card animate-on-scroll">
-                        <div class="tech-card-header">
-                            <div class="tech-card-icon orange"><i class="fas fa-robot"></i></div>
-                            <h4 class="tech-card-title">Agent Frameworks</h4>
+                    <!-- SKILLS TAB -->
+                    <div id="skills" class="tab-content active">
+                        <div class="tech-stack-header animate-on-scroll">
+                            <h3><i class="fas fa-globe"></i> AI Technology Stack</h3>
+                            <p>Cutting-edge technologies I use to build intelligent solutions</p>
                         </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">LangChain</span>
-                            <span class="tech-tag">LangGraph</span>
-                            <span class="tech-tag">CrewAI</span>
-                            <span class="tech-tag">Pydantic AI</span>
+                        <div class="tech-grid">
+                            <div class="tech-card animate-on-scroll">
+                                <div class="tech-card-header">
+                                    <div class="tech-card-icon orange"><i class="fas fa-robot"></i></div>
+                                    <h4 class="tech-card-title">Agent Frameworks</h4>
+                                </div>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">LangChain</span>
+                                    <span class="tech-tag">LangGraph</span>
+                                    <span class="tech-tag">CrewAI</span>
+                                    <span class="tech-tag">Pydantic AI</span>
+                                </div>
+                            </div>
+                            <div class="tech-card animate-on-scroll">
+                                <div class="tech-card-header">
+                                    <div class="tech-card-icon cyan"><i class="fas fa-users-cog"></i></div>
+                                    <h4 class="tech-card-title">Agent Development</h4>
+                                </div>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">AutoGen</span>
+                                    <span class="tech-tag">Agentic Workflow</span>
+                                    <span class="tech-tag">Voice Agents</span>
+                                    <span class="tech-tag">Multi-Agent</span>
+                                </div>
+                            </div>
+                            <div class="tech-card animate-on-scroll">
+                                <div class="tech-card-header">
+                                    <div class="tech-card-icon green"><i class="fas fa-brain"></i></div>
+                                    <h4 class="tech-card-title">ML & Deep Learning</h4>
+                                </div>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Machine Learning</span>
+                                    <span class="tech-tag">Deep Learning</span>
+                                    <span class="tech-tag">NLP</span>
+                                    <span class="tech-tag">Computer Vision</span>
+                                </div>
+                            </div>
+                            <div class="tech-card animate-on-scroll">
+                                <div class="tech-card-header">
+                                    <div class="tech-card-icon purple"><i class="fas fa-server"></i></div>
+                                    <h4 class="tech-card-title">AI Infrastructure</h4>
+                                </div>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">MLOps</span>
+                                    <span class="tech-tag">Prompt Engineering</span>
+                                    <span class="tech-tag">LLM Fine-Tuning</span>
+                                    <span class="tech-tag">RAG Systems</span>
+                                </div>
+                            </div>
+                            <div class="tech-card animate-on-scroll">
+                                <div class="tech-card-header">
+                                    <div class="tech-card-icon pink"><i class="fas fa-chart-area"></i></div>
+                                    <h4 class="tech-card-title">Monitoring & Observability</h4>
+                                </div>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Streamlit</span>
+                                    <span class="tech-tag">Gradio</span>
+                                    <span class="tech-tag">MLflow</span>
+                                    <span class="tech-tag">Prometheus</span>
+                                </div>
+                            </div>
+                            <div class="tech-card animate-on-scroll">
+                                <div class="tech-card-header">
+                                    <div class="tech-card-icon rose"><i class="fas fa-bolt"></i></div>
+                                    <h4 class="tech-card-title">Integrations & Automation</h4>
+                                </div>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Workflow Automation</span>
+                                    <span class="tech-tag">API Integration</span>
+                                    <span class="tech-tag">Selenium</span>
+                                    <span class="tech-tag">Web Scraping</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="tech-card animate-on-scroll">
-                        <div class="tech-card-header">
-                            <div class="tech-card-icon cyan"><i class="fas fa-users-cog"></i></div>
-                            <h4 class="tech-card-title">Agent Development</h4>
+
+                    <!-- SERVICES TAB (New) -->
+                    <div id="services" class="tab-content">
+                        <div class="tech-stack-header animate-on-scroll">
+                            <h3><i class="fas fa-concierge-bell"></i> My Services</h3>
+                            <p>Specialized AI & Automation Solutions</p>
                         </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">AutoGen</span>
-                            <span class="tech-tag">Agentic Workflow</span>
-                            <span class="tech-tag">Voice Agents</span>
-                            <span class="tech-tag">Multi-Agent</span>
-                        </div>
-                    </div>
-                    <div class="tech-card animate-on-scroll">
-                        <div class="tech-card-header">
-                            <div class="tech-card-icon green"><i class="fas fa-brain"></i></div>
-                            <h4 class="tech-card-title">ML & Deep Learning</h4>
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">Deep Learning</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">Computer Vision</span>
-                        </div>
-                    </div>
-                    <div class="tech-card animate-on-scroll">
-                        <div class="tech-card-header">
-                            <div class="tech-card-icon purple"><i class="fas fa-server"></i></div>
-                            <h4 class="tech-card-title">AI Infrastructure</h4>
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">MLOps</span>
-                            <span class="tech-tag">Prompt Engineering</span>
-                            <span class="tech-tag">LLM Fine-Tuning</span>
-                            <span class="tech-tag">RAG Systems</span>
-                        </div>
-                    </div>
-                    <div class="tech-card animate-on-scroll">
-                        <div class="tech-card-header">
-                            <div class="tech-card-icon pink"><i class="fas fa-chart-area"></i></div>
-                            <h4 class="tech-card-title">Monitoring & Observability</h4>
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Streamlit</span>
-                            <span class="tech-tag">Gradio</span>
-                            <span class="tech-tag">MLflow</span>
-                            <span class="tech-tag">Prometheus</span>
+                        <div class="services-grid">
+                            <div class="service-card animate-on-scroll">
+                                <div class="service-icon"><i class="fas fa-brain"></i></div>
+                                <h4>AI Agent Development</h4>
+                                <p>Custom autonomous agents using LangChain & CrewAI to automate complex business
+                                    workflows and decision-making.</p>
+                            </div>
+                            <div class="service-card animate-on-scroll">
+                                <div class="service-icon"><i class="fas fa-robot"></i></div>
+                                <h4>Process Automation</h4>
+                                <p>End-to-end automation of repetitive tasks using Python, Selenium, and API
+                                    integrations to save time and costs.</p>
+                            </div>
+                            <div class="service-card animate-on-scroll">
+                                <div class="service-icon"><i class="fas fa-database"></i></div>
+                                <h4>RAG & Chatbots</h4>
+                                <p>Intelligent RAG systems and chatbots trained on your custom data for smarter customer
+                                    support and knowledge retrieval.</p>
+                            </div>
+                            <div class="service-card animate-on-scroll">
+                                <div class="service-icon"><i class="fas fa-code"></i></div>
+                                <h4>SaaS Development</h4>
+                                <p>Building scalable AI-powered SaaS applications with modern full-stack technologies.
+                                </p>
+                            </div>
+                            <div class="service-card animate-on-scroll">
+                                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                                <h4>AI Consulting</h4>
+                                <p>Strategic consulting to identify high-impact AI opportunities and implementation
+                                    roadmaps for your business.</p>
+                            </div>
+                            <div class="service-card animate-on-scroll">
+                                <div class="service-icon"><i class="fas fa-search"></i></div>
+                                <h4>Web Scraping & Data</h4>
+                                <p>Advanced data extraction and processing pipelines to fuel your AI models and business
+                                    insights.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="tech-card animate-on-scroll">
-                        <div class="tech-card-header">
-                            <div class="tech-card-icon rose"><i class="fas fa-bolt"></i></div>
-                            <h4 class="tech-card-title">Integrations & Automation</h4>
+
+                    <!-- EXPERIENCE TAB (Moved here) -->
+                    <div id="experience" class="tab-content">
+                        <div class="tech-stack-header animate-on-scroll">
+                            <h3><i class="fas fa-briefcase"></i> Professional Experience</h3>
+                            <p>My journey in the industry</p>
                         </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Workflow Automation</span>
-                            <span class="tech-tag">API Integration</span>
-                            <span class="tech-tag">Selenium</span>
-                            <span class="tech-tag">Web Scraping</span>
+                        <div class="experience-stats">
+                            <div class="exp-stat animate-on-scroll">
+                                <div class="exp-stat-icon">💼</div>
+                                <div class="exp-stat-number">2+</div>
+                                <div class="exp-stat-label">Years Experience</div>
+                            </div>
+                            <div class="exp-stat animate-on-scroll">
+                                <div class="exp-stat-icon">🏢</div>
+                                <div class="exp-stat-number">3+</div>
+                                <div class="exp-stat-label">Organizations</div>
+                            </div>
+                            <div class="exp-stat animate-on-scroll">
+                                <div class="exp-stat-icon">🎯</div>
+                                <div class="exp-stat-number">10+</div>
+                                <div class="exp-stat-label">Projects Delivered</div>
+                            </div>
+                            <div class="exp-stat animate-on-scroll">
+                                <div class="exp-stat-icon">⚖️</div>
+                                <div class="exp-stat-number">1</div>
+                                <div class="exp-stat-label">IEEE Publication</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline">
+                            <div class="timeline-item animate-on-scroll">
+                                <div class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <h3 class="timeline-title">AI & Automation Engineer</h3>
+                                            <p class="timeline-company">Care Guide</p>
+                                        </div>
+                                        <span class="timeline-badge">Full-time</span>
+                                    </div>
+                                    <p class="timeline-date">Sep 2025 - Present</p>
+                                    <p class="timeline-description">Building AI-powered tools and automation solutions
+                                        to
+                                        streamline company processes.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item animate-on-scroll">
+                                <div class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <h3 class="timeline-title">Python Automation</h3>
+                                            <p class="timeline-company">Geospace Engineering</p>
+                                        </div>
+                                        <span class="timeline-badge">Full-time</span>
+                                    </div>
+                                    <p class="timeline-date">Nov 2024 - Present</p>
+                                    <p class="timeline-description">Developing Python-based automation solutions and
+                                        robotics
+                                        applications at Uttara, Dhaka.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item animate-on-scroll">
+                                <div class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <h3 class="timeline-title">Software Test Engineer</h3>
+                                            <p class="timeline-company">Bangladesh Computer Council</p>
+                                        </div>
+                                        <span class="timeline-badge">Internship</span>
+                                    </div>
+                                    <p class="timeline-date">Nov 2023 - Dec 2023</p>
+                                    <p class="timeline-description">Software testing and QA internship at ICT Tower,
+                                        Agargaon.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -2542,84 +2753,7 @@
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <span class="section-label"><i class="fas fa-briefcase"></i> Career</span>
-                    <h2>My <span>Experience</span></h2>
-                    <p>Professional journey and achievements</p>
-                </div>
-
-                <div class="experience-stats">
-                    <div class="exp-stat animate-on-scroll">
-                        <div class="exp-stat-icon">💼</div>
-                        <div class="exp-stat-number">2+</div>
-                        <div class="exp-stat-label">Years Experience</div>
-                    </div>
-                    <div class="exp-stat animate-on-scroll">
-                        <div class="exp-stat-icon">🏢</div>
-                        <div class="exp-stat-number">3+</div>
-                        <div class="exp-stat-label">Organizations</div>
-                    </div>
-                    <div class="exp-stat animate-on-scroll">
-                        <div class="exp-stat-icon">🎯</div>
-                        <div class="exp-stat-number">10+</div>
-                        <div class="exp-stat-label">Projects Delivered</div>
-                    </div>
-                    <div class="exp-stat animate-on-scroll">
-                        <div class="exp-stat-icon">⚖️</div>
-                        <div class="exp-stat-number">1</div>
-                        <div class="exp-stat-label">IEEE Publication</div>
-                    </div>
-                </div>
-
-                <div class="timeline">
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-card">
-                            <div class="timeline-header">
-                                <div>
-                                    <h3 class="timeline-title">AI & Automation Engineer</h3>
-                                    <p class="timeline-company">Care Guide</p>
-                                </div>
-                                <span class="timeline-badge">Full-time</span>
-                            </div>
-                            <p class="timeline-date">Sep 2025 - Present</p>
-                            <p class="timeline-description">Building AI-powered tools and automation solutions to
-                                streamline company processes.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-card">
-                            <div class="timeline-header">
-                                <div>
-                                    <h3 class="timeline-title">Python Automation</h3>
-                                    <p class="timeline-company">Geospace Engineering</p>
-                                </div>
-                                <span class="timeline-badge">Full-time</span>
-                            </div>
-                            <p class="timeline-date">Nov 2024 - Present</p>
-                            <p class="timeline-description">Developing Python-based automation solutions and robotics
-                                applications at Uttara, Dhaka.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-card">
-                            <div class="timeline-header">
-                                <div>
-                                    <h3 class="timeline-title">Software Test Engineer</h3>
-                                    <p class="timeline-company">Bangladesh Computer Council</p>
-                                </div>
-                                <span class="timeline-badge">Internship</span>
-                            </div>
-                            <p class="timeline-date">Nov 2023 - Dec 2023</p>
-                            <p class="timeline-description">Software testing and QA internship at ICT Tower, Agargaon.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Old Experience Section removed as it's now in the tabs -->
 
         <!-- Education Section -->
         <section id="education">
@@ -2959,8 +3093,19 @@
         // Tab functionality
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
+                // Remove active class from buttons
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
+
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                // Show target content
+                const targetId = btn.getAttribute('data-target');
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
             });
         });
 
