@@ -1682,6 +1682,186 @@
             justify-content: flex-end;
             gap: 12px;
         }
+
+        /* LeetCode Card Styles */
+        .leetcode-section {
+            padding-bottom: 60px;
+        }
+
+        .leetcode-card {
+            background: #1c1c1c;
+            /* Darker card match */
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .leetcode-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .leetcode-profile {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .leetcode-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .leetcode-info h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .leetcode-info span {
+            color: #8a8a8a;
+            font-size: 0.9rem;
+        }
+
+        .leetcode-rank {
+            background: rgba(255, 161, 22, 0.1);
+            color: #ffa116;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .leetcode-stats-row {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .leetcode-circle-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: conic-gradient(#ffa116 var(--percentage), #2d2d2d 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .leetcode-circle-container::before {
+            content: '';
+            position: absolute;
+            width: 128px;
+            height: 128px;
+            background: #1c1c1c;
+            border-radius: 50%;
+        }
+
+        .leetcode-circle-inner {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .leetcode-total {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .leetcode-label {
+            color: #8a8a8a;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        .leetcode-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .stat-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+        }
+
+        .difficulty {
+            width: 55px;
+            color: #8a8a8a;
+            font-weight: 500;
+        }
+
+        .bar-container {
+            flex: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        /* Glow effect matching screenshot */
+        .bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 6px;
+            background: inherit;
+            filter: brightness(1.5);
+            box-shadow: 0 0 10px inherit;
+        }
+
+        .bar-fill.easy {
+            background: #00b8a3;
+            width: 27%;
+        }
+
+        /* 218/806 approx 27%? No, relative to total Qs? Screenshot bars are relative to each other maybe? Or max? Whatever looks good. Screenshot Easy is ~40%, Med ~80%, Hard ~20% */
+        /* Actually bars are just visual. I will set widths to match visual appearance in screenshot */
+        .bar-fill.medium {
+            background: #ffc01e;
+            width: 60%;
+        }
+
+        .bar-fill.hard {
+            background: #ef4743;
+            width: 16%;
+        }
+
+        .stat-count {
+            width: 40px;
+            text-align: right;
+            color: #fff;
+            font-weight: 600;
+        }
     </style>
 </head>
 
@@ -2011,7 +2191,60 @@
             </div>
         </section>
 
-        <!-- Coding Profile Section has been moved up -->
+        <!-- Coding Profile Section -->
+        <section class="leetcode-section">
+            <div class="container">
+                <div class="leetcode-card animate-on-scroll">
+                    <div class="leetcode-header">
+                        <div class="leetcode-profile">
+                            <img src="profile.png" alt="taopi74" class="leetcode-avatar">
+                            <div class="leetcode-info">
+                                <h3>taopi74</h3>
+                                <span>LeetCode Profile</span>
+                            </div>
+                        </div>
+                        <div class="leetcode-rank">
+                            Rank: 52,121
+                        </div>
+                    </div>
+                    <div class="leetcode-stats-row">
+                        <!-- 806 / (Total Leetcode Qs ~3000) is about 26%, or maybe 806 is the total?
+                             The circle arc in screenshot looks like ~60-70%. I'll check if 806 is "Solved" out of User's goal or Total.
+                             The screenshot orange arc is about 220 degrees.
+                             I'll set var--percentage to roughly match screenshot -->
+                        <div class="leetcode-circle-container" style="--percentage: 220deg;">
+                            <div class="leetcode-circle-inner">
+                                <span class="leetcode-total">806</span>
+                                <span class="leetcode-label">Solved</span>
+                            </div>
+                        </div>
+                        <div class="leetcode-bars">
+                            <div class="stat-bar-item">
+                                <span class="difficulty">Easy</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill easy" style="width: 27%"></div>
+                                </div>
+                                <span class="stat-count">218</span>
+                            </div>
+                            <div class="stat-bar-item">
+                                <span class="difficulty">Medium</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill medium" style="width: 58%"></div>
+                                </div>
+                                <span class="stat-count">464</span>
+                            </div>
+                            <div class="stat-bar-item">
+                                <span class="difficulty">Hard</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill hard" style="width: 15%"></div>
+                                </div>
+                                <span class="stat-count">124</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Experience Section -->
         <section id="experience">
