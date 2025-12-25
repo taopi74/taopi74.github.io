@@ -515,8 +515,10 @@
         }
 
         .tab-btn:hover:not(.active) {
+            background: rgba(56, 189, 248, 0.15);
             border-color: var(--secondary);
             color: var(--secondary);
+            transform: translateY(-2px);
         }
 
         /* Tech Stack */
@@ -814,37 +816,65 @@
             color: var(--secondary);
         }
 
+        /* Updated Project Card Styles */
         .project-info {
-            padding: 20px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .project-badge {
             display: inline-block;
-            padding: 4px 10px;
+            padding: 6px 12px;
+            /* bit larger */
             background: rgba(56, 189, 248, 0.1);
             color: var(--secondary);
             border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 10px;
+            width: fit-content;
         }
 
         .project-info h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 6px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
         }
 
         .project-tech {
             color: var(--primary);
-            font-size: 0.8rem;
-            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
         .project-info p {
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             line-height: 1.6;
+        }
+
+        .project-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: auto;
+            padding: 10px 16px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .project-btn:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            color: #000;
         }
 
         /* Contact Section */
@@ -1426,20 +1456,77 @@
 
         /* Heatmap Styles */
         .lc-heatmap {
-            margin-top: 20px;
+            margin-top: 24px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lc-heatmap-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .lc-heatmap-stat {
+            display: flex;
+            gap: 6px;
+        }
+
+        .lc-heatmap-stat span {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .heatmap-container {
+            overflow-x: auto;
         }
 
         .heatmap-grid {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-rows: repeat(7, 12px);
+            grid-auto-flow: column;
             gap: 3px;
+            width: max-content;
         }
 
         .day-square {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 2px;
             background: var(--bg-card-light);
+            /* Default empty color */
+            position: relative;
+        }
+
+        .day-square:hover::after {
+            content: attr(data-title);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Match LeetCode Colors */
+        .day-square.level-0 {
+            background: rgba(60, 60, 67, 0.1);
+        }
+
+        /* Light theme default */
+        [data-theme="dark"] .day-square.level-0 {
+            background: #2d2d2d;
         }
 
         .day-square.level-1 {
@@ -1447,11 +1534,11 @@
         }
 
         .day-square.level-2 {
-            background: rgba(34, 197, 94, 0.5);
+            background: rgba(34, 197, 94, 0.4);
         }
 
         .day-square.level-3 {
-            background: rgba(34, 197, 94, 0.8);
+            background: rgba(34, 197, 94, 0.7);
         }
 
         .day-square.level-4 {
@@ -1471,6 +1558,130 @@
             background: var(--secondary);
             border-radius: 4px;
         }
+
+        /* Modal Styles */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+            padding: 20px;
+        }
+
+        .modal-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            width: 100%;
+            max-width: 700px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            position: relative;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-backdrop.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--bg-card);
+            z-index: 10;
+        }
+
+        .modal-header h3 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #ef4743;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .modal-tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--secondary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .modal-overview {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .modal-desc {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            white-space: pre-line;
+            /* Preserves newlines */
+        }
+
+        .modal-footer {
+            padding: 20px 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
     </style>
 </head>
 
@@ -1482,6 +1693,7 @@
                 <li><a href="#hero" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -1658,8 +1870,23 @@
                     </div>
 
                     <!-- Heatmap -->
+                    <!-- Heatmap -->
                     <div class="lc-heatmap">
-                        <div class="heatmap-grid" id="lc-heatmap-grid"></div>
+                        <div class="lc-heatmap-header">
+                            <div class="lc-heatmap-stat">
+                                <span id="heatmap-total">0</span> submissions in the past one year
+                            </div>
+                            <div class="lc-heatmap-stat">
+                                Total active days: <span id="heatmap-days">0</span>
+                            </div>
+                            <div class="lc-heatmap-stat">
+                                Max streak: <span id="heatmap-streak">0</span>
+                            </div>
+                        </div>
+                        <div class="heatmap-container">
+                            <div class="heatmap-grid" id="lc-heatmap-grid"></div>
+                        </div>
+                        <!-- Month labels can be added here if needed, usually grid is enough -->
                     </div>
 
                 </div>
@@ -1797,9 +2024,14 @@
 
                 <div class="experience-stats">
                     <div class="exp-stat animate-on-scroll">
-                        <div class="exp-stat-icon">⚖️</div>
-                        <div class="exp-stat-number">1</div>
-                        <div class="exp-stat-label">Publication (IEEE)</div>
+                        <div class="exp-stat-icon">💼</div>
+                        <div class="exp-stat-number">2+</div>
+                        <div class="exp-stat-label">Years Experience</div>
+                    </div>
+                    <div class="exp-stat animate-on-scroll">
+                        <div class="exp-stat-icon">🏢</div>
+                        <div class="exp-stat-number">3+</div>
+                        <div class="exp-stat-label">Organizations</div>
                     </div>
                     <div class="exp-stat animate-on-scroll">
                         <div class="exp-stat-icon">🎯</div>
@@ -1807,14 +2039,9 @@
                         <div class="exp-stat-label">Projects Delivered</div>
                     </div>
                     <div class="exp-stat animate-on-scroll">
-                        <div class="exp-stat-icon">🎓</div>
-                        <div class="exp-stat-number">BSc</div>
-                        <div class="exp-stat-label">CSE Graduate</div>
-                    </div>
-                    <div class="exp-stat animate-on-scroll">
-                        <div class="exp-stat-icon">🏢</div>
-                        <div class="exp-stat-number">3+</div>
-                        <div class="exp-stat-label">Organizations</div>
+                        <div class="exp-stat-icon">⚖️</div>
+                        <div class="exp-stat-number">1</div>
+                        <div class="exp-stat-label">IEEE Publication</div>
                     </div>
                 </div>
 
@@ -1861,6 +2088,43 @@
                             </p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-label"><i class="fas fa-graduation-cap"></i> Academic Background</span>
+                    <h2>My <span>Education</span></h2>
+                    <p>Academic journey and qualifications</p>
+                </div>
+
+                <div class="experience-stats">
+                    <div class="exp-stat animate-on-scroll">
+                        <div class="exp-stat-icon">🎓</div>
+                        <div class="exp-stat-number">BSc</div>
+                        <div class="exp-stat-label">CSE Graduate</div>
+                    </div>
+                    <div class="exp-stat animate-on-scroll">
+                        <div class="exp-stat-icon">🏫</div>
+                        <div class="exp-stat-number">4</div>
+                        <div class="exp-stat-label">Years Study</div>
+                    </div>
+                    <div class="exp-stat animate-on-scroll">
+                        <div class="exp-stat-icon">🏆</div>
+                        <div class="exp-stat-number">3.5+</div>
+                        <div class="exp-stat-label">CGPA</div>
+                    </div>
+                    <div class="exp-stat animate-on-scroll">
+                        <div class="exp-stat-icon">📚</div>
+                        <div class="exp-stat-number">AI</div>
+                        <div class="exp-stat-label">Specialization</div>
+                    </div>
+                </div>
+
+                <div class="timeline">
                     <div class="timeline-item animate-on-scroll">
                         <div class="timeline-card">
                             <div class="timeline-header">
@@ -1870,8 +2134,10 @@
                                 </div>
                                 <span class="timeline-badge">Completed</span>
                             </div>
-                            <p class="timeline-description">Comprehensive education in Software Engineering, AI, and
-                                Computer Science fundamentals.</p>
+                            <p class="timeline-date">2020 - 2024</p>
+                            <p class="timeline-description">Comprehensive education in Software Engineering, AI, Machine
+                                Learning, and Computer Science fundamentals. Specialized in Artificial Intelligence and
+                                Deep Learning with hands-on projects in NLP, Computer Vision, and Agent Development.</p>
                         </div>
                     </div>
                 </div>
@@ -1904,6 +2170,7 @@
                             <h4>AI Business Analyst (Michael)</h4>
                             <p class="project-tech">Python | LangChain | Natural Language</p>
                             <p>Talk to your business data in natural language to get insights.</p>
+                            <a href="#" class="project-btn"><i class="fas fa-eye"></i> View Details</a>
                         </div>
                     </div>
                     <!-- Interviewr Agent -->
@@ -1922,6 +2189,7 @@
                             <h4>Interviewr Agent</h4>
                             <p class="project-tech">Python | Django | Google Gemini API</p>
                             <p>AI interview practice tool for competitive job market preparation.</p>
+                            <a href="#" class="project-btn"><i class="fas fa-eye"></i> View Details</a>
                         </div>
                     </div>
                     <!-- AI Voice Assistant for Home Appliance -->
@@ -1941,6 +2209,27 @@
                             <h4>AI Voice Assistant for Appliance Repair</h4>
                             <p class="project-tech">Python | Speech-to-Text | NLP</p>
                             <p>Voice assistant for AC, fridge, oven, washing machine repair services.</p>
+                            <a href="#" class="project-btn"><i class="fas fa-eye"></i> View Details</a>
+                        </div>
+                    </div>
+                    <!-- Bengali NLP Voice Assistant -->
+                    <div class="project-card animate-on-scroll">
+                        <div class="project-image">
+                            <img src="https://placehold.co/600x400/1e1e2e/4ade80?text=Bengali+NLP+Voice+AI"
+                                alt="Bengali NLP Voice Assistant">
+                            <div class="project-overlay">
+                                <a href="https://github.com/taopi74" target="_blank" class="project-link"><i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-badge">🇧🇩 Bengali NLP</span>
+                            <h4>Bengali Voice Companion</h4>
+                            <p class="project-tech">Custom STT/TTS | Bengali NLP | Voice AI</p>
+                            <p>Developed a custom Speech-to-Text and Text-to-Speech engine tailored for the Bengali
+                                language, featuring advanced NLP capabilities for accurate voice interactions.</p>
+                            <a href="#" class="project-btn" data-id="bengali-voice"><i class="fas fa-eye"></i> View
+                                Details</a>
                         </div>
                     </div>
                     <!-- IEEE Research Paper -->
@@ -1958,6 +2247,7 @@
                             <h4>CNN-Based Lane Marking Detection</h4>
                             <p class="project-tech">Deep Learning | CNN | Computer Vision</p>
                             <p>IEEE STI 2023 paper: Enhanced Road Lane Marking Detection for Safe Driving.</p>
+                            <a href="#" class="project-btn"><i class="fas fa-eye"></i> View Details</a>
                         </div>
                     </div>
                     <!-- Web Testing AI Portal -->
@@ -1976,6 +2266,7 @@
                             <h4>Web Testing AI Portal</h4>
                             <p class="project-tech">Python | Streamlit | Automation</p>
                             <p>Interactive web app for AI-powered automated testing.</p>
+                            <a href="#" class="project-btn"><i class="fas fa-eye"></i> View Details</a>
                         </div>
                     </div>
                     <!-- What is taopi74 -->
@@ -1992,6 +2283,7 @@
                             <h4>What is taopi74?</h4>
                             <p class="project-tech">Personal Branding | YouTube</p>
                             <p>Learn about who taopi74 is and what I do in tech.</p>
+                            <a href="#" class="project-btn"><i class="fas fa-eye"></i> View Details</a>
                         </div>
                     </div>
                 </div>
@@ -2048,7 +2340,7 @@
                             <span><i class="far fa-clock"></i> Response: within 24 hours</span>
                             <span><i class="far fa-check-circle"></i> Free: 30-min AI strategy call</span>
                         </div>
-                        <a href="https://calendly.com/190041237tr/30min" target="_blank" class="btn-meeting">
+                        <a href="https://calendly.com/tarqulopi77/30min" target="_blank" class="btn-meeting">
                             <i class="far fa-calendar-alt"></i> Book a Meeting
                         </a>
                     </div>
@@ -2177,96 +2469,254 @@
                 const data = await response.json();
 
                 if (data.status === 'success') {
-                    document.getElementById('lc-rank').textContent = `Rank: ${data.ranking.toLocaleString()}`;
-                    document.getElementById('lc-total').textContent = data.totalSolved;
+                    // Basic Stats
+                    const rankEl = document.getElementById('lc-rank');
+                    if (rankEl) rankEl.textContent = `Rank: ${data.ranking.toLocaleString()}`;
 
-                    document.getElementById('lc-easy').textContent = data.easySolved;
-                    document.getElementById('lc-medium').textContent = data.mediumSolved;
-                    document.getElementById('lc-hard').textContent = data.hardSolved;
+                    const totalEl = document.getElementById('lc-total');
+                    if (totalEl) totalEl.textContent = data.totalSolved;
+
+                    const easyEl = document.getElementById('lc-easy');
+                    const mediumEl = document.getElementById('lc-medium');
+                    const hardEl = document.getElementById('lc-hard');
+
+                    if (easyEl) easyEl.textContent = data.easySolved;
+                    if (mediumEl) mediumEl.textContent = data.mediumSolved;
+                    if (hardEl) hardEl.textContent = data.hardSolved;
 
                     // Update bars
-                    document.getElementById('lc-easy-bar').style.width = `${(data.easySolved / data.totalEasy) * 100}%`;
-                    document.getElementById('lc-medium-bar').style.width = `${(data.mediumSolved / data.totalMedium) * 100}%`;
-                    document.getElementById('lc-hard-bar').style.width = `${(data.hardSolved / data.totalHard) * 100}%`;
+                    const easyBar = document.getElementById('lc-easy-bar');
+                    const mediumBar = document.getElementById('lc-medium-bar');
+                    const hardBar = document.getElementById('lc-hard-bar');
+
+                    if (easyBar) easyBar.style.width = `${(data.easySolved / data.totalEasy) * 100}%`;
+                    if (mediumBar) mediumBar.style.width = `${(data.mediumSolved / data.totalMedium) * 100}%`;
+                    if (hardBar) hardBar.style.width = `${(data.hardSolved / data.totalHard) * 100}%`;
 
                     // Update circle
                     const circle = document.getElementById('lc-circle');
-                    const radius = 54;
-                    const circumference = 2 * Math.PI * radius; // ~339.292
-
-                    const totalQuestions = data.totalQuestions;
-                    const percent = data.totalSolved / totalQuestions;
-                    const offset = circumference - (percent * circumference);
-
-                    circle.style.strokeDashoffset = offset;
+                    if (circle) {
+                        const radius = 54;
+                        const circumference = 2 * Math.PI * radius;
+                        const totalQuestions = data.totalQuestions;
+                        const percent = data.totalSolved / totalQuestions;
+                        const offset = circumference - (percent * circumference);
+                        circle.style.strokeDashoffset = offset;
+                    }
 
                     // Render Heatmap
-                    renderHeatmap(data.submissionCalendar);
+                    if (data.submissionCalendar) {
+                        renderHeatmap(data.submissionCalendar);
+                    }
                 }
             } catch (error) {
                 console.error('Error fetching LeetCode stats:', error);
-                document.getElementById('lc-rank').textContent = 'Rank: N/A';
+                const rankEl = document.getElementById('lc-rank');
+                if (rankEl) rankEl.textContent = 'Rank: N/A';
             }
         }
 
         function renderHeatmap(calendarData) {
             const grid = document.getElementById('lc-heatmap-grid');
+            if (!grid) return;
+
             grid.innerHTML = '';
 
-            // Get last 365 days
-            const today = new Date();
-            for (let i = 364; i >= 0; i--) {
-                const date = new Date(today);
-                date.setDate(date.getDate() - i);
-
-                // Convert to timestamp (seconds) to match API format keys
-                // API keys are timestamps of start of day? usually weird format, need to check
-                // Actually leetcode API usually returns unix timestamp string in seconds
-
-                // Simple check for now: try to match key by converting to epoch seconds range
-                // But efficient way: convert calendarData keys to readable dates or match logic
-
-                // Better approach:
-                // calendarData is { "1701234": 2, ... }
-                // Let's normalize it to a Map for easier lookup
-            }
-
-            // Simplified: Loop 160 squares for mobile friendly visualization or 365 for full
-            // Let's create a visual grid regardless of exact date matching for now to ensure UI structure, 
-            // then map data if possible. 
-            // Actually, let's map it correctly using the timestamp keys.
-
+            // 1. Process Data
             const submissionMap = new Map();
-            for (const [timestamp, count] of Object.entries(calendarData)) {
-                // Key is string unix timestamp in seconds
-                const ts = parseInt(timestamp);
-                const d = new Date(ts * 1000);
-                const dateKey = d.toISOString().split('T')[0];
+            let totalSubmissions = 0;
+            let activeDays = 0;
+            let dates = [];
+
+            // API returns timestamps in seconds string
+            for (const [tsStr, count] of Object.entries(calendarData)) {
+                let ts = parseInt(tsStr);
+                const date = new Date(ts * 1000);
+                const dateKey = date.toISOString().split('T')[0];
+
                 submissionMap.set(dateKey, count);
+                totalSubmissions += count;
+                activeDays++;
+                dates.push(ts * 1000);
             }
 
-            for (let i = 0; i < 364; i++) { // Past year
-                const d = new Date();
-                d.setDate(d.getDate() - (364 - i));
-                const dateKey = d.toISOString().split('T')[0];
+            // 2. Calculate Stats (Active Days, Max Streak)
+            dates.sort((a, b) => a - b);
+            let maxStreak = 0;
 
+            if (dates.length > 0) {
+                const uniqueDays = [...new Set(dates.map(ts => {
+                    const d = new Date(ts);
+                    d.setHours(0, 0, 0, 0);
+                    return d.getTime();
+                }))].sort((a, b) => a - b);
+
+                let streak = 0;
+                const oneDay = 24 * 60 * 60 * 1000;
+
+                for (let i = 0; i < uniqueDays.length; i++) {
+                    if (i === 0) {
+                        streak = 1;
+                    } else {
+                        const diff = (uniqueDays[i] - uniqueDays[i - 1]);
+                        if (diff >= oneDay - 7200000 && diff <= oneDay + 7200000) {
+                            streak++;
+                        } else {
+                            streak = 1;
+                        }
+                    }
+                    if (streak > maxStreak) maxStreak = streak;
+                }
+            }
+
+            // Update Header Stats
+            const totalEl = document.getElementById('heatmap-total');
+            const daysEl = document.getElementById('heatmap-days');
+            const streakEl = document.getElementById('heatmap-streak');
+
+            if (totalEl) totalEl.textContent = totalSubmissions;
+            if (daysEl) daysEl.textContent = activeDays;
+            if (streakEl) streakEl.textContent = maxStreak;
+
+
+            // 3. Render Grid (Last 52 Weeks)
+            const endDate = new Date();
+            const totalWeeks = 53;
+            const totalDays = totalWeeks * 7;
+
+            // Start from the Sunday 52 weeks ago
+            const startDate = new Date(endDate);
+            startDate.setDate(endDate.getDate() - (totalDays - 1));
+            // Adjust to previous Sunday
+            while (startDate.getDay() !== 0) {
+                startDate.setDate(startDate.getDate() - 1);
+            }
+
+            let currentDate = new Date(startDate);
+
+            for (let i = 0; i < (totalWeeks * 7); i++) {
+                const dateKey = currentDate.toISOString().split('T')[0];
                 const count = submissionMap.get(dateKey) || 0;
+
                 let level = 0;
                 if (count > 0) level = 1;
-                if (count > 2) level = 2;
-                if (count > 5) level = 3;
-                if (count > 10) level = 4;
+                if (count >= 2) level = 2;
+                if (count >= 4) level = 3;
+                if (count >= 6) level = 4;
 
                 const square = document.createElement('div');
                 square.className = `day-square level-${level}`;
-                square.title = `${dateKey}: ${count} submissions`;
+                square.setAttribute('data-title', `${dateKey}: ${count} submissions`);
+
                 grid.appendChild(square);
+
+                // Next day
+                currentDate.setDate(currentDate.getDate() + 1);
             }
         }
 
         // Call when in view or load
         document.addEventListener('DOMContentLoaded', fetchLeetCodeStats);
     </script>
+</body>
+
+<!-- Project Details Modal -->
+<div class="modal-backdrop" id="projectModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Project Title</h3>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <img src="" alt="Project Image" class="modal-image" id="modalImage">
+            <div class="modal-tags" id="modalTags"></div>
+            <p class="modal-overview" id="modalOverview"></p>
+            <div class="modal-desc" id="modalDesc"></div>
+        </div>
+        <div class="modal-footer" id="modalFooter">
+            <button class="btn btn-outline-secondary modal-close-btn">Close</button>
+            <a href="#contact" class="btn btn-primary"><i class="fas fa-comments"></i> Discuss Project</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Project Data
+    const projectsData = {
+        'bengali-voice': {
+            title: "Bengali Voice Companion",
+            badge: "🇧🇩 Bengali NLP",
+            image: "https://placehold.co/600x400/1e1e2e/4ade80?text=Bengali+NLP+Voice+AI",
+            overview: "Custom STT and TTS model with very low WER for Bengali. Features natural TTS and full agentic RAG bot built on N8n (No-code platform).",
+            description: "Bangla Voice Agent: Finetuned a Custom STT and TTS model, got a very lower wer for STT and TTS was super natural, and made a full agentic rag bot on N8n (No code) using this.\n\nThis project showcases the power of custom language models for regional languages, achieving exceptional accuracy in speech recognition and natural-sounding text-to-speech for Bengali.",
+            tech: ["Custom STT/TTS", "Bengali NLP", "N8n", "Agentic RAG"]
+        }
+    };
+
+    // Modal Logic
+    const modal = document.getElementById('projectModal');
+    const closeBtns = document.querySelectorAll('.modal-close, .modal-close-btn');
+
+    function openModal(projectId, fallbackData = null) {
+        const data = projectsData[projectId] || fallbackData;
+        if (!data) return;
+
+        document.getElementById('modalTitle').textContent = data.title;
+        document.getElementById('modalImage').src = data.image;
+        document.getElementById('modalOverview').textContent = data.overview || '';
+        document.getElementById('modalDesc').textContent = data.description || '';
+
+        const tagsContainer = document.getElementById('modalTags');
+        tagsContainer.innerHTML = '';
+        (data.tech || []).forEach(tag => {
+            const span = document.createElement('span');
+            span.className = 'modal-tag';
+            span.textContent = tag;
+            tagsContainer.appendChild(span);
+        });
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // Event Delegation for Project Buttons
+    document.querySelectorAll('.project-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const card = btn.closest('.project-card');
+            const id = btn.dataset.id;
+
+            // Fallback scraper if no ID or data found
+            let fallbackData = null;
+            if (!projectsData[id]) {
+                const title = card.querySelector('h4').textContent;
+                const techText = card.querySelector('.project-tech').textContent;
+                const desc = card.querySelector('p:not(.project-tech)').textContent;
+                const img = card.querySelector('img').src;
+
+                fallbackData = {
+                    title: title,
+                    image: img,
+                    overview: desc,
+                    description: "Detailed description pending update...",
+                    tech: techText.split('|').map(t => t.trim())
+                };
+            }
+
+            openModal(id, fallbackData);
+        });
+    });
+</script>
 </body>
 
 </html>
