@@ -184,22 +184,28 @@ nav {
   gap: 3px;
 }
 
+/* ACHIEVEMENT CARDS — STACKED TWO */
+.ach-stack { display: flex; flex-direction: column; gap: 3px; }
+
 .achievement-card {
   background: var(--ink);
   color: var(--paper);
-  padding: 44px 40px;
+  padding: 36px 36px;
   position: relative;
   overflow: hidden;
 }
 .achievement-card::after {
   content: '⬡';
   position: absolute;
-  bottom: -30px; right: -10px;
-  font-size: 10rem;
+  bottom: -24px; right: -8px;
+  font-size: 8rem;
   color: rgba(255,255,255,0.025);
   pointer-events: none;
   line-height: 1;
 }
+
+/* Second card — slightly lighter bg for contrast */
+.achievement-card.alt { background: #1a1f2b; }
 
 .ach-tag {
   font-family: 'JetBrains Mono', monospace;
@@ -207,51 +213,55 @@ nav {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold-lt);
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .ach-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.45rem;
+  font-size: 1.3rem;
   font-weight: 400;
   font-style: italic;
-  line-height: 1.4;
-  margin-bottom: 28px;
+  line-height: 1.35;
+  margin-bottom: 22px;
 }
 
 .ach-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: rgba(255,255,255,0.08);
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
+.ach-stats.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.ach-stats.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
 .stat {
   background: rgba(17,19,24,0.96);
-  padding: 20px 14px;
+  padding: 16px 12px;
   text-align: center;
 }
+.achievement-card.alt .stat { background: rgba(26,31,43,0.98); }
+
 .stat-n {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.1rem;
+  font-size: 1.85rem;
   font-weight: 300;
   color: var(--gold-lt);
   display: block;
   line-height: 1;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 .stat-l {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.56rem;
+  font-size: 0.52rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(245,242,236,0.4);
 }
 
 .ach-note {
-  font-size: 0.82rem;
-  line-height: 1.75;
-  color: rgba(245,242,236,0.55);
+  font-size: 0.8rem;
+  line-height: 1.72;
+  color: rgba(245,242,236,0.52);
   font-style: italic;
 }
 
@@ -403,6 +413,19 @@ nav {
 }
 .exp-points li::before { content: '—'; position: absolute; left: 0; color: var(--fog-lt); }
 
+/* Inline stat chips inside experience bullets */
+.chip {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  border: 1px solid rgba(184,134,11,0.35);
+  padding: 1px 8px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
 .badge {
   display: inline-block;
   margin-top: 18px;
@@ -414,6 +437,7 @@ nav {
   background: var(--gold);
   padding: 5px 13px;
 }
+.badge + .badge { margin-left: 8px; }
 
 /* PROJECTS */
 #projects { background: var(--cream); }
@@ -628,7 +652,8 @@ footer a { color: var(--gold-lt); text-decoration: none; }
   .exp-row { grid-template-columns: 1fr; gap: 16px; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   footer { flex-direction: column; gap: 8px; padding: 24px; text-align: center; }
-  .ach-stats, .status-row { grid-template-columns: 1fr 1fr; }
+  .ach-stats { grid-template-columns: 1fr 1fr !important; }
+  .status-row { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
@@ -658,16 +683,35 @@ footer a { color: var(--gold-lt); text-decoration: none; }
   </div>
 
   <div class="hero-right">
-    <div class="achievement-card rv">
-      <div class="ach-tag">⬡ Notable Achievement</div>
-      <div class="ach-title">LLM-Powered Payroll Billing Automation — Enterprise Healthcare, USA</div>
-      <div class="ach-stats">
-        <div class="stat"><span class="stat-n">99.98%</span><span class="stat-l">Accuracy</span></div>
-        <div class="stat"><span class="stat-n">1.33s</span><span class="stat-l">Processing Time</span></div>
-        <div class="stat"><span class="stat-n">4–5hr</span><span class="stat-l">Manual Work Removed</span></div>
+    <div class="ach-stack">
+
+      <!-- Achievement 1 — Compliance Verification (NEW) -->
+      <div class="achievement-card rv">
+        <div class="ach-tag">⬡ What I Actually Shipped — #1</div>
+        <div class="ach-title">Compliance Verification Automation — Enterprise Healthcare, USA</div>
+        <div class="ach-stats cols-4">
+          <div class="stat"><span class="stat-n">7–8</span><span class="stat-l">People Replaced</span></div>
+          <div class="stat"><span class="stat-n">3–4d</span><span class="stat-l">Weekly → 40min</span></div>
+          <div class="stat"><span class="stat-n">200/m</span><span class="stat-l">Rate Limited</span></div>
+          <div class="stat"><span class="stat-n">500+</span><span class="stat-l">Entries / Batch</span></div>
+        </div>
+        <p class="ach-note">Replaced a 3–4 day weekly process requiring 7–8 people with a single-operator system that completes in under 40 minutes. SOAP API integration via Python + Zeep, sliding-window rate limiting at 200 calls/min, SSE progress streaming, exponential backoff, and auto CSV export for failures.</p>
       </div>
-      <p class="ach-note">Replaced a multi-hour weekly manual reconciliation process with a fully automated LLM system — processing large-scale payroll data at 99.98% accuracy in under 1.33 seconds with zero human error.</p>
+
+      <!-- Achievement 2 — Payroll Billing (UPDATED) -->
+      <div class="achievement-card alt rv">
+        <div class="ach-tag">⬡ What I Actually Shipped — #2</div>
+        <div class="ach-title">Payroll Billing Cross-Check System — Enterprise Healthcare, USA</div>
+        <div class="ach-stats cols-3">
+          <div class="stat"><span class="stat-n">99.98%</span><span class="stat-l">Accuracy</span></div>
+          <div class="stat"><span class="stat-n">1.33s</span><span class="stat-l">Processing Time</span></div>
+          <div class="stat"><span class="stat-n">4–5hr</span><span class="stat-l">Manual Work Removed</span></div>
+        </div>
+        <p class="ach-note">Replaced a 4–5 hour weekly manual process requiring 2–3 people with an LLM pipeline that finishes in under 1.33 seconds at 99.98% accuracy. Handles high-volume financial data in production with zero manual intervention.</p>
+      </div>
+
     </div>
+
     <div class="status-row rv">
       <div class="status-cell"><span class="s-key">Location</span><span class="s-val">Dhaka, BD 🇧🇩</span></div>
       <div class="status-cell"><span class="s-key">Timezone</span><span class="s-val">UTC+6 · EST OK</span></div>
@@ -700,9 +744,9 @@ footer a { color: var(--gold-lt); text-decoration: none; }
         </div>
       </div>
       <div class="skill-box rv">
-        <div class="skill-box-title">CRM &amp; Automation</div>
+        <div class="skill-box-title">APIs &amp; Automation</div>
         <div class="pills">
-          <span class="pill k">HubSpot</span><span class="pill k">GoHighLevel</span><span class="pill">n8n</span><span class="pill">FastAPI</span><span class="pill">REST APIs</span><span class="pill">Webhooks</span>
+          <span class="pill k">SOAP / Zeep</span><span class="pill k">FastAPI</span><span class="pill k">SSE Streaming</span><span class="pill">HubSpot</span><span class="pill">GoHighLevel</span><span class="pill">n8n</span><span class="pill">REST APIs</span><span class="pill">Webhooks</span>
         </div>
       </div>
       <div class="skill-box rv">
@@ -733,15 +777,16 @@ footer a { color: var(--gold-lt); text-decoration: none; }
         </div>
         <div class="exp-main">
           <div class="exp-company">Cottage Homecare Services · IT / Software Dept.</div>
-          <div class="exp-role">AI &amp; Automation Engineer (R&D)</div>
+          <div class="exp-role">AI &amp; Automation Engineer (R&amp;D)</div>
           <ul class="exp-points">
-            <li>Designed and deployed an LLM-powered payroll billing automation system — replacing a 4–5 hour weekly manual reconciliation process with 99.98% accuracy in under 1.33 seconds at enterprise scale.</li>
-            <li>Built end-to-end automation pipelines for Payroll CRM, HR workflows, Nursing operations, and Patient Intake using Python, LangChain, and OpenAI / Azure OpenAI.</li>
+            <li>Built a Compliance Verification Automation system using SOAP API (Python + Zeep) with sliding-window rate limiting at 200 calls/min, SSE progress streaming, exponential backoff, and auto CSV export — replacing a 3–4 day weekly process requiring 7–8 people with a single-operator 40-minute run. <span class="chip">200–500+ entries/batch</span></li>
+            <li>Designed and deployed an LLM-powered Payroll Billing Cross-Check pipeline — replacing a 4–5 hour weekly manual reconciliation process (2–3 people) with 99.98% accuracy in under 1.33 seconds at enterprise scale. <span class="chip">Zero manual intervention</span></li>
+            <li>Built end-to-end automation pipelines for HR workflows, Nursing operations, and Patient Intake using Python, LangChain, and OpenAI / Azure OpenAI.</li>
             <li>Integrated RAG architectures with Azure Cognitive Search and PostgreSQL/pgvector for internal knowledge retrieval powered by Llama, Groq, and OpenAI.</li>
             <li>Engineered automated data flows between CRM and EMR systems — ensuring clean, deduplicated, structured data delivery across admin and clinical teams.</li>
-            <li>Led R&D on AI-driven process automation for payroll, HR compliance, and financial operations.</li>
           </ul>
           <span class="badge">⬡ Production System</span>
+          <span class="badge">⬡ Enterprise Scale</span>
         </div>
       </div>
 
@@ -752,9 +797,9 @@ footer a { color: var(--gold-lt); text-decoration: none; }
         </div>
         <div class="exp-main">
           <div class="exp-company">Dhaka Robotics · Dhaka</div>
-          <div class="exp-role">Software Engineer (R&D)</div>
+          <div class="exp-role">Software Engineer (R&amp;D)</div>
           <ul class="exp-points">
-            <li>Designed and integrated AI/ML models (Llama, Groq, OpenAI) into production R&D applications.</li>
+            <li>Designed and integrated AI/ML models (Llama, Groq, OpenAI) into production R&amp;D applications.</li>
             <li>Led QA process development including flow diagrams for complex user scenarios.</li>
             <li>Delivered high-quality software in Agile sprints across product, design, and engineering teams.</li>
           </ul>
@@ -931,7 +976,6 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.07 });
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
-// Trigger hero immediately
 document.querySelectorAll('#hero .rv').forEach((el, i) => {
   setTimeout(() => el.classList.add('in'), 300 + i * 180);
 });
